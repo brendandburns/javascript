@@ -3,9 +3,11 @@ import request = require('request');
 import { Duplex } from 'stream';
 import { anything, capture, instance, mock, spy, verify, when } from 'ts-mockito';
 import { EventEmitter } from 'ws';
+import { V1Pod } from './api';
 
 import { KubeConfig } from './config';
 import { Cluster, Context, User } from './config_types';
+import { ObjectSerializer } from './gen/api';
 import { DefaultRequest, RequestResult, Watch } from './watch';
 
 const server = 'foo.company.com';
@@ -136,14 +138,22 @@ describe('Watch', () => {
         const obj1 = {
             type: 'ADDED',
             object: {
-                foo: 'bar',
+                apiVersion: 'v1',
+                kind: 'Pod',
+                metadata: {
+                    name: 'test',
+                },
             },
         };
 
         const obj2 = {
             type: 'MODIFIED',
             object: {
-                baz: 'blah',
+                apiVersion: 'v1',
+                kind: 'Pod',
+                metadata: {
+                    name: 'test2',
+                },
             },
         };
 
@@ -160,7 +170,7 @@ describe('Watch', () => {
         const path = '/some/path/to/object';
 
         const receivedTypes: string[] = [];
-        const receivedObjects: string[] = [];
+        const receivedObjects: any[] = [];
         let doneCalled = 0;
         let doneErr: any;
 
@@ -187,7 +197,9 @@ describe('Watch', () => {
         expect(reqOpts.json).to.equal(true);
 
         expect(receivedTypes).to.deep.equal([obj1.type, obj2.type]);
-        expect(receivedObjects).to.deep.equal([obj1.object, obj2.object]);
+        expect(receivedObjects.length).to.deep.equal(2);
+        expect(receivedObjects[0].metadata.name).to.equal('test');
+        expect(receivedObjects[1].metadata.name).to.equal('test2');
 
         expect(doneCalled).to.equal(0);
 
@@ -209,7 +221,11 @@ describe('Watch', () => {
         const obj1 = {
             type: 'ADDED',
             object: {
-                foo: 'bar',
+                apiVersion: 'v1',
+                kind: 'Pod',
+                metadata: {
+                    name: 'test',
+                },
             },
         };
 
@@ -226,7 +242,7 @@ describe('Watch', () => {
         const path = '/some/path/to/object';
 
         const receivedTypes: string[] = [];
-        const receivedObjects: string[] = [];
+        const receivedObjects: any[] = [];
         let doneCalled = false;
         let doneErr: any[] = [];
 
@@ -253,7 +269,8 @@ describe('Watch', () => {
         expect(reqOpts.json).to.equal(true);
 
         expect(receivedTypes).to.deep.equal([obj1.type]);
-        expect(receivedObjects).to.deep.equal([obj1.object]);
+        expect(receivedObjects.length).to.deep.equal(1);
+        expect(receivedObjects[0].metadata.name).to.equal('test');
 
         expect(doneCalled).to.equal(true);
         expect(doneErr.length).to.equal(1);
@@ -269,7 +286,11 @@ describe('Watch', () => {
         const obj1 = {
             type: 'ADDED',
             object: {
-                foo: 'bar',
+                apiVersion: 'v1',
+                kind: 'Pod',
+                metadata: {
+                    name: 'test',
+                },
             },
         };
 
@@ -284,7 +305,7 @@ describe('Watch', () => {
         const path = '/some/path/to/object';
 
         const receivedTypes: string[] = [];
-        const receivedObjects: string[] = [];
+        const receivedObjects: any[] = [];
         let doneCalled = false;
         let doneErr: any;
 
@@ -311,7 +332,8 @@ describe('Watch', () => {
         expect(reqOpts.json).to.equal(true);
 
         expect(receivedTypes).to.deep.equal([obj1.type]);
-        expect(receivedObjects).to.deep.equal([obj1.object]);
+        expect(receivedObjects.length).to.deep.equal(1);
+        expect(receivedObjects[0].metadata.name).to.equal('test');
 
         expect(doneCalled).to.equal(true);
         expect(doneErr).to.be.null;
@@ -326,7 +348,11 @@ describe('Watch', () => {
         const obj = {
             type: 'MODIFIED',
             object: {
-                baz: 'blah',
+                apiVersion: 'v1',
+                kind: 'Pod',
+                metadata: {
+                    name: 'test',
+                },
             },
         };
 
@@ -341,7 +367,7 @@ describe('Watch', () => {
         const path = '/some/path/to/object';
 
         const receivedTypes: string[] = [];
-        const receivedObjects: string[] = [];
+        const receivedObjects: any[] = [];
 
         await watch.watch(
             path,
@@ -361,7 +387,8 @@ describe('Watch', () => {
         const reqOpts: request.OptionsWithUri = opts as request.OptionsWithUri;
 
         expect(receivedTypes).to.deep.equal([obj.type]);
-        expect(receivedObjects).to.deep.equal([obj.object]);
+        expect(receivedObjects.length).to.deep.equal(1);
+        expect(receivedObjects[0].metadata.name).to.equal('test');
     });
 
     it('should throw on empty config', () => {
@@ -370,5 +397,98 @@ describe('Watch', () => {
 
         const promise = watch.watch('/some/path', {}, () => {}, () => {});
         expect(promise).to.be.rejected;
+    });
+
+    it('should parse modification times as Date', async () => {
+        const kc = new KubeConfig();
+        Object.assign(kc, fakeConfig);
+        const fakeRequestor = mock(DefaultRequest);
+        const watch = new Watch(kc, instance(fakeRequestor));
+
+        const pod: V1Pod = {
+            apiVersion: 'v1',
+            kind: 'Pod',
+            metadata: {
+                name: 'test',
+                creationTimestamp: new Date('2000-10-05T17:00:00Z'),
+            },
+        };
+
+        const obj = {
+            type: 'ADDED',
+            object: {
+                apiVersion: 'v1',
+                kind: 'Pod',
+                metadata: {
+                    creationTimestamp: '2000-10-05T17:00:00.000Z',
+                    name: 'test',
+                },
+            },
+        };
+
+        var stream;
+        const fakeRequest = new FakeRequest();
+        fakeRequest.pipe = function(arg) {
+            stream = arg;
+            stream.write(JSON.stringify(obj) + '\n');
+        };
+
+        when(fakeRequestor.webRequest(anything())).thenReturn(fakeRequest);
+
+        const path = '/some/path/to/object';
+
+        const receivedTypes: string[] = [];
+        const receivedObjects: any[] = [];
+        let doneCalled = 0;
+        let doneErr: any;
+
+        await watch.watch(
+            path,
+            {},
+            (phase: string, obj: string) => {
+                receivedTypes.push(phase);
+                receivedObjects.push(obj);
+            },
+            (err: any) => {
+                doneCalled += 1;
+                doneErr = err;
+            },
+        );
+
+        verify(fakeRequestor.webRequest(anything()));
+
+        const [opts] = capture(fakeRequestor.webRequest).last();
+        const reqOpts: request.OptionsWithUri = opts as request.OptionsWithUri;
+
+        expect(reqOpts.uri).to.equal(`${server}${path}`);
+        expect(reqOpts.method).to.equal('GET');
+        expect(reqOpts.json).to.equal(true);
+
+        expect(receivedTypes).to.deep.equal([obj.type]);
+        expect(receivedObjects.length).to.deep.equal(1);
+        expect(receivedObjects[0].metadata.creationTimestamp).to.deep.equal(pod.metadata!.creationTimestamp);
+        expect(receivedObjects[0].metadata.name).to.equal(pod.metadata!.name);
+
+        const errIn = { error: 'err' };
+        stream.emit('error', errIn);
+        expect(doneErr).to.deep.equal(errIn);
+        expect(doneCalled).to.equal(1);
+
+        stream.end();
+        expect(doneCalled).to.equal(1);
+    });
+
+    it('should generate types correctly', () => {
+        const podType = Watch.computeType({
+            apiVersion: 'v1',
+            kind: 'Pod',
+        });
+        expect(podType).to.equal('V1Pod');
+
+        const deploymentType = Watch.computeType({
+            apiVersion: 'apps/v1',
+            kind: 'Deployment',
+        });
+        expect(deploymentType).to.equal('V1Deployment');
     });
 });

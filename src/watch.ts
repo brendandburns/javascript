@@ -2,6 +2,8 @@ import byline = require('byline');
 import request = require('request');
 import { Duplex } from 'stream';
 import { KubeConfig } from './config';
+import { ObjectSerializer } from './gen/api';
+import { podsForNode } from './util';
 
 export interface WatchUpdate {
     type: string;
@@ -56,6 +58,13 @@ export class DefaultRequest implements RequestInterface {
 
 export class Watch {
     public static SERVER_SIDE_CLOSE: object = { error: 'Connection closed on server' };
+
+    public static computeType(obj: any): string {
+        const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+        const parts = obj.apiVersion.split('/');
+        return (parts.length === 1 ? capitalize(parts[0]) : capitalize(parts[1])) + capitalize(obj.kind);
+    }
+
     public config: KubeConfig;
     private readonly requestImpl: RequestInterface;
 
@@ -121,7 +130,10 @@ export class Watch {
         stream.on('data', (line) => {
             try {
                 const data = JSON.parse(line);
-                callback(data.type, data.object, data);
+
+                const apiType = Watch.computeType(data.object);
+                const obj = ObjectSerializer.deserialize(data.object, apiType);
+                callback(data.type, obj, data);
             } catch (ignore) {
                 // ignore parse errors
             }
