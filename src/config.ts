@@ -1,4 +1,4 @@
-import execa = require('execa');
+import child_process = require('child_process');
 import fs = require('fs');
 import https = require('https');
 import yaml = require('js-yaml');
@@ -6,7 +6,7 @@ import net = require('net');
 import path = require('path');
 
 import request = require('request');
-import shelljs = require('shelljs');
+import WebSocket = require('ws');
 
 import * as api from './api';
 import { Authenticator } from './auth';
@@ -26,7 +26,7 @@ import {
 import { ExecAuth } from './exec_auth';
 import { FileAuth } from './file_auth';
 import { GoogleCloudPlatformAuth } from './gcp_auth';
-import { OpenIDConnectAuth } from './oidc_auth';
+import { DelayedOpenIDConnectAuth } from './oidc_auth_delayed';
 
 // fs.existsSync was removed in node 10
 function fileExists(filepath: string): boolean {
@@ -44,7 +44,7 @@ export class KubeConfig {
         new GoogleCloudPlatformAuth(),
         new ExecAuth(),
         new FileAuth(),
-        new OpenIDConnectAuth(),
+        new DelayedOpenIDConnectAuth(),
     ];
 
     /**
@@ -130,18 +130,23 @@ export class KubeConfig {
         this.makePathsAbsolute(rootDirectory);
     }
 
-    public async applytoHTTPSOptions(opts: https.RequestOptions): Promise<void> {
-        const user = this.getCurrentUser();
-        const cluster = this.getCurrentCluster();
-
+    public async applytoHTTPSOptions(opts: https.RequestOptions | WebSocket.ClientOptions): Promise<void> {
         await this.applyOptions(opts);
 
+        const user = this.getCurrentUser();
         if (user && user.username) {
-            opts.auth = `${user.username}:${user.password}`;
+            // The ws docs say that it accepts anything that https.RequestOptions accepts,
+            // but Typescript doesn't understand that idea (yet) probably could be fixed in
+            // the typings, but for now just cast to any
+            (opts as any).auth = `${user.username}:${user.password}`;
         }
 
+        const cluster = this.getCurrentCluster();
         if (cluster && cluster.tlsServerName) {
-            opts.servername = cluster.tlsServerName;
+            // The ws docs say that it accepts anything that https.RequestOptions accepts,
+            // but Typescript doesn't understand that idea (yet) probably could be fixed in
+            // the typings, but for now just cast to any
+            (opts as any).servername = cluster.tlsServerName;
         }
     }
 
@@ -160,6 +165,10 @@ export class KubeConfig {
                 password: user.password,
                 username: user.username,
             };
+        }
+
+        if (cluster && cluster.tlsServerName) {
+            opts.agentOptions = { servername: cluster.tlsServerName } as https.AgentOptions;
         }
     }
 
@@ -314,13 +323,20 @@ export class KubeConfig {
                 return;
             }
         }
-        if (process.platform === 'win32' && shelljs.which('wsl.exe')) {
+        if (process.platform === 'win32') {
             try {
-                const envKubeconfigPathResult = execa.sync('wsl.exe', ['bash', '-c', 'printenv KUBECONFIG']);
-                if (envKubeconfigPathResult.exitCode === 0 && envKubeconfigPathResult.stdout.length > 0) {
-                    const result = execa.sync('wsl.exe', ['cat', envKubeconfigPathResult.stdout]);
-                    if (result.exitCode === 0) {
-                        this.loadFromString(result.stdout, opts);
+                const envKubeconfigPathResult = child_process.spawnSync('wsl.exe', [
+                    'bash',
+                    '-c',
+                    'printenv KUBECONFIG',
+                ]);
+                if (envKubeconfigPathResult.status === 0 && envKubeconfigPathResult.stdout.length > 0) {
+                    const result = child_process.spawnSync('wsl.exe', [
+                        'cat',
+                        envKubeconfigPathResult.stdout.toString('utf8'),
+                    ]);
+                    if (result.status === 0) {
+                        this.loadFromString(result.stdout.toString('utf8'), opts);
                         return;
                     }
                 }
@@ -328,12 +344,12 @@ export class KubeConfig {
                 // Falling back to default kubeconfig
             }
             try {
-                const configResult = execa.sync('wsl.exe', ['cat', '~/.kube/config']);
-                if (configResult.exitCode === 0) {
-                    this.loadFromString(configResult.stdout, opts);
-                    const result = execa.sync('wsl.exe', ['wslpath', '-w', '~/.kube']);
-                    if (result.exitCode === 0) {
-                        this.makePathsAbsolute(result.stdout);
+                const configResult = child_process.spawnSync('wsl.exe', ['cat', '~/.kube/config']);
+                if (configResult.status === 0) {
+                    this.loadFromString(configResult.stdout.toString('utf8'), opts);
+                    const result = child_process.spawnSync('wsl.exe', ['wslpath', '-w', '~/.kube']);
+                    if (result.status === 0) {
+                        this.makePathsAbsolute(result.stdout.toString('utf8'));
                     }
                     return;
                 }
@@ -398,7 +414,7 @@ export class KubeConfig {
         return this.getContextObject(this.currentContext);
     }
 
-    private applyHTTPSOptions(opts: request.Options | https.RequestOptions): void {
+    private applyHTTPSOptions(opts: request.Options | https.RequestOptions | WebSocket.ClientOptions): void {
         const cluster = this.getCurrentCluster();
         const user = this.getCurrentUser();
         if (!user) {
@@ -422,7 +438,9 @@ export class KubeConfig {
         }
     }
 
-    private async applyAuthorizationHeader(opts: request.Options | https.RequestOptions): Promise<void> {
+    private async applyAuthorizationHeader(
+        opts: request.Options | https.RequestOptions | WebSocket.ClientOptions,
+    ): Promise<void> {
         const user = this.getCurrentUser();
         if (!user) {
             return;
@@ -443,7 +461,9 @@ export class KubeConfig {
         }
     }
 
-    private async applyOptions(opts: request.Options | https.RequestOptions): Promise<void> {
+    private async applyOptions(
+        opts: request.Options | https.RequestOptions | WebSocket.ClientOptions,
+    ): Promise<void> {
         this.applyHTTPSOptions(opts);
         await this.applyAuthorizationHeader(opts);
     }
@@ -522,18 +542,15 @@ export function bufferFromFileOrString(file?: string, data?: string): Buffer | n
 }
 
 function dropDuplicatesAndNils(a: string[]): string[] {
-    return a.reduce(
-        (acceptedValues, currentValue) => {
-            // Good-enough algorithm for reducing a small (3 items at this point) array into an ordered list
-            // of unique non-empty strings.
-            if (currentValue && !acceptedValues.includes(currentValue)) {
-                return acceptedValues.concat(currentValue);
-            } else {
-                return acceptedValues;
-            }
-        },
-        [] as string[],
-    );
+    return a.reduce((acceptedValues, currentValue) => {
+        // Good-enough algorithm for reducing a small (3 items at this point) array into an ordered list
+        // of unique non-empty strings.
+        if (currentValue && !acceptedValues.includes(currentValue)) {
+            return acceptedValues.concat(currentValue);
+        } else {
+            return acceptedValues;
+        }
+    }, [] as string[]);
 }
 
 // Only public for testing.

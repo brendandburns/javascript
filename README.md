@@ -1,8 +1,8 @@
 # Javascript Kubernetes Client information
 
 [![Build Status](https://github.com/kubernetes-client/javascript/workflows/Kubernetes%20Javascript%20Client%20-%20Validation/badge.svg)](https://github.com/kubernetes-client/javascript/actions)
-[![Client Capabilities](https://img.shields.io/badge/Kubernetes%20client-Gold-blue.svg?style=flat&colorB=FFD700&colorA=306CE8)](http://bit.ly/kubernetes-client-capabilities-badge)
-[![Client Support Level](https://img.shields.io/badge/kubernetes%20client-beta-green.svg?style=flat&colorA=306CE8)](http://bit.ly/kubernetes-client-support-badge)
+[![Client Capabilities](https://img.shields.io/badge/Kubernetes%20client-Gold-blue.svg?style=flat&colorB=FFD700&colorA=306CE8)](https://bit.ly/kubernetes-client-capabilities-badge)
+[![Client Support Level](https://img.shields.io/badge/kubernetes%20client-beta-green.svg?style=flat&colorA=306CE8)](https://bit.ly/kubernetes-client-support-badge)
 [![Build and Deploy Docs](https://github.com/kubernetes-client/javascript/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/kubernetes-client/javascript/actions/workflows/deploy-docs.yml)
 
 The Javascript clients for Kubernetes is implemented in
@@ -113,13 +113,14 @@ release, we will increment the minor version whenever we update the minor Kubern
 
 Generally speaking newer clients will work with older Kubernetes, but compatability isn't 100% guaranteed.
 
-| client version | older versions | 1.19 | 1.20 | 1.21 | 1.22 | 1.23 | 1.24 |
-|----------------|----------------|------|------|------|------|-------|------|
-|  0.13.x        |       -        |  ✓   |  x   |  x   |  x   |  x   |  x   |
-|  0.14.x        |       -        |  +   |  ✓   |  x   |  x   |  x   |  x   |
-|  0.15.x        |       -        |  +   |  +   |  ✓   |  x   |  x   |  x   |
-|  0.16.x        |       -        |  +   |  +   |  +   |  ✓   |  x   |  x   |
-|  0.17.x        |       -        |  -   |  -   |  +   |  +   |  +   |  ✓   |
+| client version | older versions | 1.19 | 1.20 | 1.21 | 1.22 | 1.23 | 1.24 | 1.25 |
+|----------------|----------------|------|------|------|------|-------|------|-----|
+|  0.13.x        |       -        |  ✓   |  x   |  x   |  x   |  x   |  x   |  x  |
+|  0.14.x        |       -        |  +   |  ✓   |  x   |  x   |  x   |  x   |  x  |
+|  0.15.x        |       -        |  +   |  +   |  ✓   |  x   |  x   |  x   |  x  |
+|  0.16.x        |       -        |  +   |  +   |  +   |  ✓   |  x   |  x   |  x  |
+|  0.17.x        |       -        |  -   |  -   |  +   |  +   |  +   |  ✓   |  x  |
+|  0.18.x        |       -        |  -   |  -   |  -   |  +   |  +   |  +   |  ✓  |
 
 Key:
 
@@ -176,7 +177,7 @@ Run `npm run lint` or install an editor plugin like https://github.com/Microsoft
 
 # Testing
 
-Tests are written using the [Chai](http://chaijs.com/) library. See
+Tests are written using the [Chai](https://chaijs.com/) library. See
 [`config_test.ts`](./src/config_test.ts) for an example.
 
 To run tests, execute the following:

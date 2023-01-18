@@ -21,7 +21,7 @@ jobs:
       - name: Checkout Javascript
         uses: actions/checkout@v3
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
       - name: Checkout Gen
@@ -30,6 +30,7 @@ jobs:
           pushd gen
           git checkout "${{ github.event.inputs.genCommit }}"
           # apply https://github.com/kubernetes-client/gen/pull/224
+          git config --global user.name "Github Actions"
           git cherry-pick --strategy=recursive -X theirs c557f7f
       - name: Generate Branch Name
         run: |
