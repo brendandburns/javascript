@@ -23,7 +23,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">V1NodeConfigStatus</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/026b3ea/src/gen/model/v1NodeConfigStatus.ts#L19">src/gen/model/v1NodeConfigStatus.ts:19</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/998dfa1/src/gen/model/v1NodeConfigStatus.ts#L19">src/gen/model/v1NodeConfigStatus.ts:19</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -60,34 +60,34 @@
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>active</span><a href="#active" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">active<span class="tsd-signature-symbol">?:</span> <a href="V1NodeConfigSource.html" class="tsd-signature-type" data-tsd-kind="Class">V1NodeConfigSource</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/026b3ea/src/gen/model/v1NodeConfigStatus.ts#L20">src/gen/model/v1NodeConfigStatus.ts:20</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/998dfa1/src/gen/model/v1NodeConfigStatus.ts#L20">src/gen/model/v1NodeConfigStatus.ts:20</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="assigned" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>assigned</span><a href="#assigned" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">assigned<span class="tsd-signature-symbol">?:</span> <a href="V1NodeConfigSource.html" class="tsd-signature-type" data-tsd-kind="Class">V1NodeConfigSource</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/026b3ea/src/gen/model/v1NodeConfigStatus.ts#L21">src/gen/model/v1NodeConfigStatus.ts:21</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/998dfa1/src/gen/model/v1NodeConfigStatus.ts#L21">src/gen/model/v1NodeConfigStatus.ts:21</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="error" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>error</span><a href="#error" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">error<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>Error describes any problems reconciling the Spec.ConfigSource to the Active config. Errors may occur, for example, attempting to checkpoint Spec.ConfigSource to the local Assigned record, attempting to checkpoint the payload associated with Spec.ConfigSource, attempting to load or validate the Assigned config, etc. Errors may occur at different points while syncing config. Earlier errors (e.g. download or checkpointing errors) will not result in a rollback to LastKnownGood, and may resolve across Kubelet retries. Later errors (e.g. loading or validating a checkpointed config) will result in a rollback to LastKnownGood. In the latter case, it is usually possible to resolve the error by fixing the config assigned in Spec.ConfigSource. You can find additional information for debugging by searching the error message in the Kubelet log. Error is a human-readable description of the error state; machines can check whether or not Error is empty, but should not rely on the stability of the Error text across Kubelet versions.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/026b3ea/src/gen/model/v1NodeConfigStatus.ts#L25">src/gen/model/v1NodeConfigStatus.ts:25</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/998dfa1/src/gen/model/v1NodeConfigStatus.ts#L25">src/gen/model/v1NodeConfigStatus.ts:25</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="lastKnownGood" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>last<wbr/>Known<wbr/>Good</span><a href="#lastKnownGood" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">last<wbr/>Known<wbr/>Good<span class="tsd-signature-symbol">?:</span> <a href="V1NodeConfigSource.html" class="tsd-signature-type" data-tsd-kind="Class">V1NodeConfigSource</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/026b3ea/src/gen/model/v1NodeConfigStatus.ts#L26">src/gen/model/v1NodeConfigStatus.ts:26</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/998dfa1/src/gen/model/v1NodeConfigStatus.ts#L26">src/gen/model/v1NodeConfigStatus.ts:26</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="attributeTypeMap" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>attribute<wbr/>Type<wbr/>Map</span><a href="#attributeTypeMap" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">attribute<wbr/>Type<wbr/>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/026b3ea/src/gen/model/v1NodeConfigStatus.ts#L30">src/gen/model/v1NodeConfigStatus.ts:30</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/998dfa1/src/gen/model/v1NodeConfigStatus.ts#L30">src/gen/model/v1NodeConfigStatus.ts:30</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="discriminator" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>discriminator</span><a href="#discriminator" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">discriminator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = undefined</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/026b3ea/src/gen/model/v1NodeConfigStatus.ts#L28">src/gen/model/v1NodeConfigStatus.ts:28</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/998dfa1/src/gen/model/v1NodeConfigStatus.ts#L28">src/gen/model/v1NodeConfigStatus.ts:28</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="getAttributeTypeMap" class="tsd-anchor"></a>
@@ -97,7 +97,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/026b3ea/src/gen/model/v1NodeConfigStatus.ts#L52">src/gen/model/v1NodeConfigStatus.ts:52</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/998dfa1/src/gen/model/v1NodeConfigStatus.ts#L52">src/gen/model/v1NodeConfigStatus.ts:52</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
