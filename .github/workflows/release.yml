@@ -14,11 +14,8 @@ jobs:
         with:
           node-version: '16'
       - name: Package
-        run: |
-          cd javascript
-          ./build-package.sh
+        run: ./build-package.sh
       - name: Upload
-        run: |
-          ./push-package.sh
+        run: ./push-package.sh
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
