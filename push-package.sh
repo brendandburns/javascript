@@ -17,8 +17,10 @@ case "${confirm}" in
   * ) echo "Aborting"; exit 0;;
 esac
 
-git tag ${version} 
-git push upstream ${version} 
+if [[ -z "$SKIP_TAG" ]]; then
+  git tag ${version} 
+  git push upstream ${version} 
+fi
 
 npm publish
 npm version patch -m "Update to version ${version}"
