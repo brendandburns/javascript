@@ -6,6 +6,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Checkout Javascript
         uses: actions/checkout@v3
@@ -21,3 +22,4 @@ jobs:
         run: ./push-package.sh
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          confirm: "y"
