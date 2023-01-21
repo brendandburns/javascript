@@ -23,7 +23,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">V1SecurityContext</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L22">src/gen/model/v1SecurityContext.ts:22</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L22">src/gen/model/v1SecurityContext.ts:22</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -69,79 +69,79 @@
 <div class="tsd-comment tsd-typography"><p>AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN Note that this field cannot be set when spec.os.name is windows.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L26">src/gen/model/v1SecurityContext.ts:26</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L26">src/gen/model/v1SecurityContext.ts:26</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="capabilities" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>capabilities</span><a href="#capabilities" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">capabilities<span class="tsd-signature-symbol">?:</span> <a href="V1Capabilities.html" class="tsd-signature-type" data-tsd-kind="Class">V1Capabilities</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L27">src/gen/model/v1SecurityContext.ts:27</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L27">src/gen/model/v1SecurityContext.ts:27</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="privileged" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>privileged</span><a href="#privileged" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">privileged<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography"><p>Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Note that this field cannot be set when spec.os.name is windows.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L31">src/gen/model/v1SecurityContext.ts:31</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L31">src/gen/model/v1SecurityContext.ts:31</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="procMount" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>proc<wbr/>Mount</span><a href="#procMount" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">proc<wbr/>Mount<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>procMount denotes the type of proc mount to use for the containers. The default is DefaultProcMount which uses the container runtime defaults for readonly paths and masked paths. This requires the ProcMountType feature flag to be enabled. Note that this field cannot be set when spec.os.name is windows.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L35">src/gen/model/v1SecurityContext.ts:35</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L35">src/gen/model/v1SecurityContext.ts:35</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="readOnlyRootFilesystem" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>read<wbr/>Only<wbr/>Root<wbr/>Filesystem</span><a href="#readOnlyRootFilesystem" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">read<wbr/>Only<wbr/>Root<wbr/>Filesystem<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography"><p>Whether this container has a read-only root filesystem. Default is false. Note that this field cannot be set when spec.os.name is windows.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L39">src/gen/model/v1SecurityContext.ts:39</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L39">src/gen/model/v1SecurityContext.ts:39</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="runAsGroup" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>run<wbr/>As<wbr/>Group</span><a href="#runAsGroup" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">run<wbr/>As<wbr/>Group<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L43">src/gen/model/v1SecurityContext.ts:43</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L43">src/gen/model/v1SecurityContext.ts:43</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="runAsNonRoot" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>run<wbr/>As<wbr/>Non<wbr/>Root</span><a href="#runAsNonRoot" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">run<wbr/>As<wbr/>Non<wbr/>Root<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography"><p>Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L47">src/gen/model/v1SecurityContext.ts:47</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L47">src/gen/model/v1SecurityContext.ts:47</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="runAsUser" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>run<wbr/>As<wbr/>User</span><a href="#runAsUser" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">run<wbr/>As<wbr/>User<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L51">src/gen/model/v1SecurityContext.ts:51</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L51">src/gen/model/v1SecurityContext.ts:51</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="seLinuxOptions" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>se<wbr/>Linux<wbr/>Options</span><a href="#seLinuxOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">se<wbr/>Linux<wbr/>Options<span class="tsd-signature-symbol">?:</span> <a href="V1SELinuxOptions.html" class="tsd-signature-type" data-tsd-kind="Class">V1SELinuxOptions</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L52">src/gen/model/v1SecurityContext.ts:52</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L52">src/gen/model/v1SecurityContext.ts:52</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="seccompProfile" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>seccomp<wbr/>Profile</span><a href="#seccompProfile" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">seccomp<wbr/>Profile<span class="tsd-signature-symbol">?:</span> <a href="V1SeccompProfile.html" class="tsd-signature-type" data-tsd-kind="Class">V1SeccompProfile</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L53">src/gen/model/v1SecurityContext.ts:53</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L53">src/gen/model/v1SecurityContext.ts:53</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="windowsOptions" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>windows<wbr/>Options</span><a href="#windowsOptions" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">windows<wbr/>Options<span class="tsd-signature-symbol">?:</span> <a href="V1WindowsSecurityContextOptions.html" class="tsd-signature-type" data-tsd-kind="Class">V1WindowsSecurityContextOptions</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L54">src/gen/model/v1SecurityContext.ts:54</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L54">src/gen/model/v1SecurityContext.ts:54</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="attributeTypeMap" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>attribute<wbr/>Type<wbr/>Map</span><a href="#attributeTypeMap" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">attribute<wbr/>Type<wbr/>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L58">src/gen/model/v1SecurityContext.ts:58</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L58">src/gen/model/v1SecurityContext.ts:58</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="discriminator" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>discriminator</span><a href="#discriminator" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">discriminator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = undefined</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L56">src/gen/model/v1SecurityContext.ts:56</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L56">src/gen/model/v1SecurityContext.ts:56</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="getAttributeTypeMap" class="tsd-anchor"></a>
@@ -151,7 +151,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1SecurityContext.ts#L115">src/gen/model/v1SecurityContext.ts:115</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1SecurityContext.ts#L115">src/gen/model/v1SecurityContext.ts:115</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">

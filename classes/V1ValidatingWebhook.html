@@ -23,7 +23,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">V1ValidatingWebhook</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L21">src/gen/model/v1ValidatingWebhook.ts:21</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L21">src/gen/model/v1ValidatingWebhook.ts:21</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -68,74 +68,74 @@
 <div class="tsd-comment tsd-typography"><p>AdmissionReviewVersions is an ordered list of preferred <code>AdmissionReview</code> versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L25">src/gen/model/v1ValidatingWebhook.ts:25</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L25">src/gen/model/v1ValidatingWebhook.ts:25</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="clientConfig" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>client<wbr/>Config</span><a href="#clientConfig" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">client<wbr/>Config<span class="tsd-signature-symbol">:</span> <a href="AdmissionregistrationV1WebhookClientConfig.html" class="tsd-signature-type" data-tsd-kind="Class">AdmissionregistrationV1WebhookClientConfig</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L26">src/gen/model/v1ValidatingWebhook.ts:26</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L26">src/gen/model/v1ValidatingWebhook.ts:26</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="failurePolicy" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>failure<wbr/>Policy</span><a href="#failurePolicy" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">failure<wbr/>Policy<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>FailurePolicy defines how unrecognized errors from the admission endpoint are handled - allowed values are Ignore or Fail. Defaults to Fail.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L30">src/gen/model/v1ValidatingWebhook.ts:30</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L30">src/gen/model/v1ValidatingWebhook.ts:30</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="matchPolicy" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>match<wbr/>Policy</span><a href="#matchPolicy" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">match<wbr/>Policy<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>matchPolicy defines how the &quot;rules&quot; list is used to match incoming requests. Allowed values are &quot;Exact&quot; or &quot;Equivalent&quot;.  - Exact: match a request only if it exactly matches a specified rule. For example, if deployments can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, but &quot;rules&quot; only included <code>apiGroups:[\&quot;apps\&quot;], apiVersions:[\&quot;v1\&quot;], resources: [\&quot;deployments\&quot;]</code>, a request to apps/v1beta1 or extensions/v1beta1 would not be sent to the webhook.  - Equivalent: match a request if modifies a resource listed in rules, even via another API group or version. For example, if deployments can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, and &quot;rules&quot; only included <code>apiGroups:[\&quot;apps\&quot;], apiVersions:[\&quot;v1\&quot;], resources: [\&quot;deployments\&quot;]</code>, a request to apps/v1beta1 or extensions/v1beta1 would be converted to apps/v1 and sent to the webhook.  Defaults to &quot;Equivalent&quot;</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L34">src/gen/model/v1ValidatingWebhook.ts:34</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L34">src/gen/model/v1ValidatingWebhook.ts:34</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>The name of the admission webhook. Name should be fully qualified, e.g., imagepolicy.kubernetes.io, where &quot;imagepolicy&quot; is the name of the webhook, and kubernetes.io is the name of the organization. Required.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L38">src/gen/model/v1ValidatingWebhook.ts:38</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L38">src/gen/model/v1ValidatingWebhook.ts:38</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="namespaceSelector" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>namespace<wbr/>Selector</span><a href="#namespaceSelector" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">namespace<wbr/>Selector<span class="tsd-signature-symbol">?:</span> <a href="V1LabelSelector.html" class="tsd-signature-type" data-tsd-kind="Class">V1LabelSelector</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L39">src/gen/model/v1ValidatingWebhook.ts:39</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L39">src/gen/model/v1ValidatingWebhook.ts:39</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="objectSelector" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>object<wbr/>Selector</span><a href="#objectSelector" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">object<wbr/>Selector<span class="tsd-signature-symbol">?:</span> <a href="V1LabelSelector.html" class="tsd-signature-type" data-tsd-kind="Class">V1LabelSelector</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L40">src/gen/model/v1ValidatingWebhook.ts:40</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L40">src/gen/model/v1ValidatingWebhook.ts:40</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="rules" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>rules</span><a href="#rules" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">rules<span class="tsd-signature-symbol">?:</span> <a href="V1RuleWithOperations.html" class="tsd-signature-type" data-tsd-kind="Class">V1RuleWithOperations</a><span class="tsd-signature-symbol">[]</span></div>
 <div class="tsd-comment tsd-typography"><p>Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches <em>any</em> Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L44">src/gen/model/v1ValidatingWebhook.ts:44</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L44">src/gen/model/v1ValidatingWebhook.ts:44</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="sideEffects" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>side<wbr/>Effects</span><a href="#sideEffects" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">side<wbr/>Effects<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>SideEffects states whether this webhook has side effects. Acceptable values are: None, NoneOnDryRun (webhooks created via v1beta1 may also specify Some or Unknown). Webhooks with side effects MUST implement a reconciliation system, since a request may be rejected by a future step in the admission chain and the side effects therefore need to be undone. Requests with the dryRun attribute will be auto-rejected if they match a webhook with sideEffects == Unknown or Some.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L48">src/gen/model/v1ValidatingWebhook.ts:48</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L48">src/gen/model/v1ValidatingWebhook.ts:48</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="timeoutSeconds" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>timeout<wbr/>Seconds</span><a href="#timeoutSeconds" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">timeout<wbr/>Seconds<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
 <div class="tsd-comment tsd-typography"><p>TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 10 seconds.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L52">src/gen/model/v1ValidatingWebhook.ts:52</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L52">src/gen/model/v1ValidatingWebhook.ts:52</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="attributeTypeMap" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>attribute<wbr/>Type<wbr/>Map</span><a href="#attributeTypeMap" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">attribute<wbr/>Type<wbr/>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L56">src/gen/model/v1ValidatingWebhook.ts:56</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L56">src/gen/model/v1ValidatingWebhook.ts:56</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="discriminator" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>discriminator</span><a href="#discriminator" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">discriminator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = undefined</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L54">src/gen/model/v1ValidatingWebhook.ts:54</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L54">src/gen/model/v1ValidatingWebhook.ts:54</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="getAttributeTypeMap" class="tsd-anchor"></a>
@@ -145,7 +145,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1ValidatingWebhook.ts#L108">src/gen/model/v1ValidatingWebhook.ts:108</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1ValidatingWebhook.ts#L108">src/gen/model/v1ValidatingWebhook.ts:108</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">

@@ -23,7 +23,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">V1CertificateSigningRequestStatus</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CertificateSigningRequestStatus.ts#L19">src/gen/model/v1CertificateSigningRequestStatus.ts:19</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CertificateSigningRequestStatus.ts#L19">src/gen/model/v1CertificateSigningRequestStatus.ts:19</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -60,24 +60,24 @@
 <div class="tsd-comment tsd-typography"><p>certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.  If the certificate signing request is denied, a condition of type &quot;Denied&quot; is added and this field remains empty. If the signer cannot issue the certificate, a condition of type &quot;Failed&quot; is added and this field remains empty.  Validation requirements:  1. certificate must contain one or more PEM blocks.  2. All PEM blocks must have the &quot;CERTIFICATE&quot; label, contain no headers, and the encoded data   must be a BER-encoded ASN.1 Certificate structure as described in section 4 of RFC5280.  3. Non-PEM content may appear before or after the &quot;CERTIFICATE&quot; PEM blocks and is unvalidated,   to allow for explanatory text as described in section 5.2 of RFC7468.  If more than one PEM block is present, and the definition of the requested spec.signerName does not indicate otherwise, the first block is the issued certificate, and subsequent blocks should be treated as intermediate certificates and presented in TLS handshakes.  The certificate is encoded in PEM format.  When serialized as JSON or YAML, the data is additionally base64-encoded, so it consists of:      base64(     -----BEGIN CERTIFICATE-----     ...     -----END CERTIFICATE-----     )</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CertificateSigningRequestStatus.ts#L23">src/gen/model/v1CertificateSigningRequestStatus.ts:23</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CertificateSigningRequestStatus.ts#L23">src/gen/model/v1CertificateSigningRequestStatus.ts:23</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="conditions" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>conditions</span><a href="#conditions" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">conditions<span class="tsd-signature-symbol">?:</span> <a href="V1CertificateSigningRequestCondition.html" class="tsd-signature-type" data-tsd-kind="Class">V1CertificateSigningRequestCondition</a><span class="tsd-signature-symbol">[]</span></div>
 <div class="tsd-comment tsd-typography"><p>conditions applied to the request. Known conditions are &quot;Approved&quot;, &quot;Denied&quot;, and &quot;Failed&quot;.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CertificateSigningRequestStatus.ts#L27">src/gen/model/v1CertificateSigningRequestStatus.ts:27</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CertificateSigningRequestStatus.ts#L27">src/gen/model/v1CertificateSigningRequestStatus.ts:27</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="attributeTypeMap" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>attribute<wbr/>Type<wbr/>Map</span><a href="#attributeTypeMap" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">attribute<wbr/>Type<wbr/>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CertificateSigningRequestStatus.ts#L31">src/gen/model/v1CertificateSigningRequestStatus.ts:31</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CertificateSigningRequestStatus.ts#L31">src/gen/model/v1CertificateSigningRequestStatus.ts:31</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="discriminator" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>discriminator</span><a href="#discriminator" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">discriminator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = undefined</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CertificateSigningRequestStatus.ts#L29">src/gen/model/v1CertificateSigningRequestStatus.ts:29</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CertificateSigningRequestStatus.ts#L29">src/gen/model/v1CertificateSigningRequestStatus.ts:29</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="getAttributeTypeMap" class="tsd-anchor"></a>
@@ -87,7 +87,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CertificateSigningRequestStatus.ts#L43">src/gen/model/v1CertificateSigningRequestStatus.ts:43</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CertificateSigningRequestStatus.ts#L43">src/gen/model/v1CertificateSigningRequestStatus.ts:43</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">

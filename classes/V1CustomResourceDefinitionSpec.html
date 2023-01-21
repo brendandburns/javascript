@@ -23,7 +23,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">V1CustomResourceDefinitionSpec</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L21">src/gen/model/v1CustomResourceDefinitionSpec.ts:21</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L21">src/gen/model/v1CustomResourceDefinitionSpec.ts:21</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -62,50 +62,50 @@
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>conversion</span><a href="#conversion" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">conversion<span class="tsd-signature-symbol">?:</span> <a href="V1CustomResourceConversion.html" class="tsd-signature-type" data-tsd-kind="Class">V1CustomResourceConversion</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L22">src/gen/model/v1CustomResourceDefinitionSpec.ts:22</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L22">src/gen/model/v1CustomResourceDefinitionSpec.ts:22</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="group" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>group</span><a href="#group" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>group is the API group of the defined custom resource. The custom resources are served under <code>/apis/&lt;group&gt;/...</code>. Must match the name of the CustomResourceDefinition (in the form <code>&lt;names.plural&gt;.&lt;group&gt;</code>).</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L26">src/gen/model/v1CustomResourceDefinitionSpec.ts:26</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L26">src/gen/model/v1CustomResourceDefinitionSpec.ts:26</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="names" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>names</span><a href="#names" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">names<span class="tsd-signature-symbol">:</span> <a href="V1CustomResourceDefinitionNames.html" class="tsd-signature-type" data-tsd-kind="Class">V1CustomResourceDefinitionNames</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L27">src/gen/model/v1CustomResourceDefinitionSpec.ts:27</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L27">src/gen/model/v1CustomResourceDefinitionSpec.ts:27</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="preserveUnknownFields" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>preserve<wbr/>Unknown<wbr/>Fields</span><a href="#preserveUnknownFields" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">preserve<wbr/>Unknown<wbr/>Fields<span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography"><p>preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. This field is deprecated in favor of setting <code>x-preserve-unknown-fields</code> to true in <code>spec.versions[*].schema.openAPIV3Schema</code>. See <a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields">https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields</a> for details.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L31">src/gen/model/v1CustomResourceDefinitionSpec.ts:31</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L31">src/gen/model/v1CustomResourceDefinitionSpec.ts:31</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="scope" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>scope</span><a href="#scope" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">scope<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values are <code>Cluster</code> and <code>Namespaced</code>.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L35">src/gen/model/v1CustomResourceDefinitionSpec.ts:35</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L35">src/gen/model/v1CustomResourceDefinitionSpec.ts:35</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="versions" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>versions</span><a href="#versions" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">versions<span class="tsd-signature-symbol">:</span> <a href="V1CustomResourceDefinitionVersion.html" class="tsd-signature-type" data-tsd-kind="Class">V1CustomResourceDefinitionVersion</a><span class="tsd-signature-symbol">[]</span></div>
 <div class="tsd-comment tsd-typography"><p>versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is &quot;kube-like&quot;, it will sort above non &quot;kube-like&quot; version strings, which are ordered lexicographically. &quot;Kube-like&quot; versions start with a &quot;v&quot;, then are followed by a number (the major version), then optionally the string &quot;alpha&quot; or &quot;beta&quot; and another number (the minor version). These are sorted first by GA &gt; beta &gt; alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L39">src/gen/model/v1CustomResourceDefinitionSpec.ts:39</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L39">src/gen/model/v1CustomResourceDefinitionSpec.ts:39</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="attributeTypeMap" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>attribute<wbr/>Type<wbr/>Map</span><a href="#attributeTypeMap" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">attribute<wbr/>Type<wbr/>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L43">src/gen/model/v1CustomResourceDefinitionSpec.ts:43</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L43">src/gen/model/v1CustomResourceDefinitionSpec.ts:43</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="discriminator" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>discriminator</span><a href="#discriminator" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">discriminator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = undefined</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L41">src/gen/model/v1CustomResourceDefinitionSpec.ts:41</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L41">src/gen/model/v1CustomResourceDefinitionSpec.ts:41</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="getAttributeTypeMap" class="tsd-anchor"></a>
@@ -115,7 +115,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span><br/><span>    </span>baseName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span>    </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span><br/><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/9ba0d19/src/gen/model/v1CustomResourceDefinitionSpec.ts#L75">src/gen/model/v1CustomResourceDefinitionSpec.ts:75</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/brendandburns/javascript/blob/d5b1e67/src/gen/model/v1CustomResourceDefinitionSpec.ts#L75">src/gen/model/v1CustomResourceDefinitionSpec.ts:75</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
