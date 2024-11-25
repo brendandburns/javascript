@@ -660,6 +660,7 @@ let body:.BatchV1ApiCreateNamespacedCronJobRequest = {
                     claims: [
                       {
                         name: "name_example",
+                        request: "request_example",
                       },
                     ],
                     limits: {
@@ -971,6 +972,7 @@ let body:.BatchV1ApiCreateNamespacedCronJobRequest = {
                     claims: [
                       {
                         name: "name_example",
+                        request: "request_example",
                       },
                     ],
                     limits: {
@@ -1285,6 +1287,7 @@ let body:.BatchV1ApiCreateNamespacedCronJobRequest = {
                     claims: [
                       {
                         name: "name_example",
+                        request: "request_example",
                       },
                     ],
                     limits: {
@@ -1411,10 +1414,8 @@ let body:.BatchV1ApiCreateNamespacedCronJobRequest = {
               resourceClaims: [
                 {
                   name: "name_example",
-                  source: {
-                    resourceClaimName: "resourceClaimName_example",
-                    resourceClaimTemplateName: "resourceClaimTemplateName_example",
-                  },
+                  resourceClaimName: "resourceClaimName_example",
+                  resourceClaimTemplateName: "resourceClaimTemplateName_example",
                 },
               ],
               restartPolicy: "restartPolicy_example",
@@ -1448,6 +1449,7 @@ let body:.BatchV1ApiCreateNamespacedCronJobRequest = {
                 supplementalGroups: [
                   1,
                 ],
+                supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
                 sysctls: [
                   {
                     name: "name_example",
@@ -1722,6 +1724,10 @@ let body:.BatchV1ApiCreateNamespacedCronJobRequest = {
                   hostPath: {
                     path: "path_example",
                     type: "type_example",
+                  },
+                  image: {
+                    pullPolicy: "pullPolicy_example",
+                    reference: "reference_example",
                   },
                   iscsi: {
                     chapAuthDiscovery: true,
@@ -2559,6 +2565,7 @@ let body:.BatchV1ApiCreateNamespacedJobRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -2870,6 +2877,7 @@ let body:.BatchV1ApiCreateNamespacedJobRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -3184,6 +3192,7 @@ let body:.BatchV1ApiCreateNamespacedJobRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -3310,10 +3319,8 @@ let body:.BatchV1ApiCreateNamespacedJobRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -3347,6 +3354,7 @@ let body:.BatchV1ApiCreateNamespacedJobRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -3621,6 +3629,10 @@ let body:.BatchV1ApiCreateNamespacedJobRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -5860,6 +5872,7 @@ let body:.BatchV1ApiReplaceNamespacedCronJobRequest = {
                     claims: [
                       {
                         name: "name_example",
+                        request: "request_example",
                       },
                     ],
                     limits: {
@@ -6171,6 +6184,7 @@ let body:.BatchV1ApiReplaceNamespacedCronJobRequest = {
                     claims: [
                       {
                         name: "name_example",
+                        request: "request_example",
                       },
                     ],
                     limits: {
@@ -6485,6 +6499,7 @@ let body:.BatchV1ApiReplaceNamespacedCronJobRequest = {
                     claims: [
                       {
                         name: "name_example",
+                        request: "request_example",
                       },
                     ],
                     limits: {
@@ -6611,10 +6626,8 @@ let body:.BatchV1ApiReplaceNamespacedCronJobRequest = {
               resourceClaims: [
                 {
                   name: "name_example",
-                  source: {
-                    resourceClaimName: "resourceClaimName_example",
-                    resourceClaimTemplateName: "resourceClaimTemplateName_example",
-                  },
+                  resourceClaimName: "resourceClaimName_example",
+                  resourceClaimTemplateName: "resourceClaimTemplateName_example",
                 },
               ],
               restartPolicy: "restartPolicy_example",
@@ -6648,6 +6661,7 @@ let body:.BatchV1ApiReplaceNamespacedCronJobRequest = {
                 supplementalGroups: [
                   1,
                 ],
+                supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
                 sysctls: [
                   {
                     name: "name_example",
@@ -6922,6 +6936,10 @@ let body:.BatchV1ApiReplaceNamespacedCronJobRequest = {
                   hostPath: {
                     path: "path_example",
                     type: "type_example",
+                  },
+                  image: {
+                    pullPolicy: "pullPolicy_example",
+                    reference: "reference_example",
                   },
                   iscsi: {
                     chapAuthDiscovery: true,
@@ -7807,6 +7825,7 @@ let body:.BatchV1ApiReplaceNamespacedCronJobStatusRequest = {
                     claims: [
                       {
                         name: "name_example",
+                        request: "request_example",
                       },
                     ],
                     limits: {
@@ -8118,6 +8137,7 @@ let body:.BatchV1ApiReplaceNamespacedCronJobStatusRequest = {
                     claims: [
                       {
                         name: "name_example",
+                        request: "request_example",
                       },
                     ],
                     limits: {
@@ -8432,6 +8452,7 @@ let body:.BatchV1ApiReplaceNamespacedCronJobStatusRequest = {
                     claims: [
                       {
                         name: "name_example",
+                        request: "request_example",
                       },
                     ],
                     limits: {
@@ -8558,10 +8579,8 @@ let body:.BatchV1ApiReplaceNamespacedCronJobStatusRequest = {
               resourceClaims: [
                 {
                   name: "name_example",
-                  source: {
-                    resourceClaimName: "resourceClaimName_example",
-                    resourceClaimTemplateName: "resourceClaimTemplateName_example",
-                  },
+                  resourceClaimName: "resourceClaimName_example",
+                  resourceClaimTemplateName: "resourceClaimTemplateName_example",
                 },
               ],
               restartPolicy: "restartPolicy_example",
@@ -8595,6 +8614,7 @@ let body:.BatchV1ApiReplaceNamespacedCronJobStatusRequest = {
                 supplementalGroups: [
                   1,
                 ],
+                supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
                 sysctls: [
                   {
                     name: "name_example",
@@ -8869,6 +8889,10 @@ let body:.BatchV1ApiReplaceNamespacedCronJobStatusRequest = {
                   hostPath: {
                     path: "path_example",
                     type: "type_example",
+                  },
+                  image: {
+                    pullPolicy: "pullPolicy_example",
+                    reference: "reference_example",
                   },
                   iscsi: {
                     chapAuthDiscovery: true,
@@ -9708,6 +9732,7 @@ let body:.BatchV1ApiReplaceNamespacedJobRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -10019,6 +10044,7 @@ let body:.BatchV1ApiReplaceNamespacedJobRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -10333,6 +10359,7 @@ let body:.BatchV1ApiReplaceNamespacedJobRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -10459,10 +10486,8 @@ let body:.BatchV1ApiReplaceNamespacedJobRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -10496,6 +10521,7 @@ let body:.BatchV1ApiReplaceNamespacedJobRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -10770,6 +10796,10 @@ let body:.BatchV1ApiReplaceNamespacedJobRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -11616,6 +11646,7 @@ let body:.BatchV1ApiReplaceNamespacedJobStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -11927,6 +11958,7 @@ let body:.BatchV1ApiReplaceNamespacedJobStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -12241,6 +12273,7 @@ let body:.BatchV1ApiReplaceNamespacedJobStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -12367,10 +12400,8 @@ let body:.BatchV1ApiReplaceNamespacedJobStatusRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -12404,6 +12435,7 @@ let body:.BatchV1ApiReplaceNamespacedJobStatusRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -12678,6 +12710,10 @@ let body:.BatchV1ApiReplaceNamespacedJobStatusRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,

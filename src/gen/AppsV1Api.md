@@ -735,6 +735,7 @@ let body:.AppsV1ApiCreateNamespacedDaemonSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -1046,6 +1047,7 @@ let body:.AppsV1ApiCreateNamespacedDaemonSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -1360,6 +1362,7 @@ let body:.AppsV1ApiCreateNamespacedDaemonSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -1486,10 +1489,8 @@ let body:.AppsV1ApiCreateNamespacedDaemonSetRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -1523,6 +1524,7 @@ let body:.AppsV1ApiCreateNamespacedDaemonSetRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -1797,6 +1799,10 @@ let body:.AppsV1ApiCreateNamespacedDaemonSetRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -2611,6 +2617,7 @@ let body:.AppsV1ApiCreateNamespacedDeploymentRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -2922,6 +2929,7 @@ let body:.AppsV1ApiCreateNamespacedDeploymentRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -3236,6 +3244,7 @@ let body:.AppsV1ApiCreateNamespacedDeploymentRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -3362,10 +3371,8 @@ let body:.AppsV1ApiCreateNamespacedDeploymentRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -3399,6 +3406,7 @@ let body:.AppsV1ApiCreateNamespacedDeploymentRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -3673,6 +3681,10 @@ let body:.AppsV1ApiCreateNamespacedDeploymentRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -4469,6 +4481,7 @@ let body:.AppsV1ApiCreateNamespacedReplicaSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -4780,6 +4793,7 @@ let body:.AppsV1ApiCreateNamespacedReplicaSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -5094,6 +5108,7 @@ let body:.AppsV1ApiCreateNamespacedReplicaSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -5220,10 +5235,8 @@ let body:.AppsV1ApiCreateNamespacedReplicaSetRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -5257,6 +5270,7 @@ let body:.AppsV1ApiCreateNamespacedReplicaSetRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -5531,6 +5545,10 @@ let body:.AppsV1ApiCreateNamespacedReplicaSetRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -6334,6 +6352,7 @@ let body:.AppsV1ApiCreateNamespacedStatefulSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -6645,6 +6664,7 @@ let body:.AppsV1ApiCreateNamespacedStatefulSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -6959,6 +6979,7 @@ let body:.AppsV1ApiCreateNamespacedStatefulSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -7085,10 +7106,8 @@ let body:.AppsV1ApiCreateNamespacedStatefulSetRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -7122,6 +7141,7 @@ let body:.AppsV1ApiCreateNamespacedStatefulSetRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -7396,6 +7416,10 @@ let body:.AppsV1ApiCreateNamespacedStatefulSetRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -12013,6 +12037,7 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -12324,6 +12349,7 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -12638,6 +12664,7 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -12764,10 +12791,8 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -12801,6 +12826,7 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -13075,6 +13101,10 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -13881,6 +13911,7 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -14192,6 +14223,7 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -14506,6 +14538,7 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -14632,10 +14665,8 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetStatusRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -14669,6 +14700,7 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetStatusRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -14943,6 +14975,10 @@ let body:.AppsV1ApiReplaceNamespacedDaemonSetStatusRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -15759,6 +15795,7 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -16070,6 +16107,7 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -16384,6 +16422,7 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -16510,10 +16549,8 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -16547,6 +16584,7 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -16821,6 +16859,10 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -17755,6 +17797,7 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -18066,6 +18109,7 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -18380,6 +18424,7 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -18506,10 +18551,8 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentStatusRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -18543,6 +18586,7 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentStatusRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -18817,6 +18861,10 @@ let body:.AppsV1ApiReplaceNamespacedDeploymentStatusRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -19615,6 +19663,7 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -19926,6 +19975,7 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -20240,6 +20290,7 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -20366,10 +20417,8 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -20403,6 +20452,7 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -20677,6 +20727,10 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -21598,6 +21652,7 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -21909,6 +21964,7 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -22223,6 +22279,7 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -22349,10 +22406,8 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetStatusRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -22386,6 +22441,7 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetStatusRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -22660,6 +22716,10 @@ let body:.AppsV1ApiReplaceNamespacedReplicaSetStatusRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -23465,6 +23525,7 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -23776,6 +23837,7 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -24090,6 +24152,7 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -24216,10 +24279,8 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -24253,6 +24314,7 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -24527,6 +24589,10 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -25589,6 +25655,7 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -25900,6 +25967,7 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -26214,6 +26282,7 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -26340,10 +26409,8 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetStatusRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -26377,6 +26444,7 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetStatusRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -26651,6 +26719,10 @@ let body:.AppsV1ApiReplaceNamespacedStatefulSetStatusRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,

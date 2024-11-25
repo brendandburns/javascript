@@ -4723,6 +4723,7 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -5034,6 +5035,7 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -5348,6 +5350,7 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -5474,10 +5477,8 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
       resourceClaims: [
         {
           name: "name_example",
-          source: {
-            resourceClaimName: "resourceClaimName_example",
-            resourceClaimTemplateName: "resourceClaimTemplateName_example",
-          },
+          resourceClaimName: "resourceClaimName_example",
+          resourceClaimTemplateName: "resourceClaimTemplateName_example",
         },
       ],
       restartPolicy: "restartPolicy_example",
@@ -5511,6 +5512,7 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
         supplementalGroups: [
           1,
         ],
+        supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
         sysctls: [
           {
             name: "name_example",
@@ -5786,6 +5788,10 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             path: "path_example",
             type: "type_example",
           },
+          image: {
+            pullPolicy: "pullPolicy_example",
+            reference: "reference_example",
+          },
           iscsi: {
             chapAuthDiscovery: true,
             chapAuthSession: true,
@@ -5975,6 +5981,17 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -6002,6 +6019,7 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -6029,6 +6047,15 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -6046,6 +6073,17 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -6073,6 +6111,7 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -6100,6 +6139,15 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -6123,6 +6171,17 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -6150,6 +6209,7 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -6177,6 +6237,15 @@ let body:.CoreV1ApiCreateNamespacedPodRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -7056,6 +7125,7 @@ let body:.CoreV1ApiCreateNamespacedPodTemplateRequest = {
               claims: [
                 {
                   name: "name_example",
+                  request: "request_example",
                 },
               ],
               limits: {
@@ -7367,6 +7437,7 @@ let body:.CoreV1ApiCreateNamespacedPodTemplateRequest = {
               claims: [
                 {
                   name: "name_example",
+                  request: "request_example",
                 },
               ],
               limits: {
@@ -7681,6 +7752,7 @@ let body:.CoreV1ApiCreateNamespacedPodTemplateRequest = {
               claims: [
                 {
                   name: "name_example",
+                  request: "request_example",
                 },
               ],
               limits: {
@@ -7807,10 +7879,8 @@ let body:.CoreV1ApiCreateNamespacedPodTemplateRequest = {
         resourceClaims: [
           {
             name: "name_example",
-            source: {
-              resourceClaimName: "resourceClaimName_example",
-              resourceClaimTemplateName: "resourceClaimTemplateName_example",
-            },
+            resourceClaimName: "resourceClaimName_example",
+            resourceClaimTemplateName: "resourceClaimTemplateName_example",
           },
         ],
         restartPolicy: "restartPolicy_example",
@@ -7844,6 +7914,7 @@ let body:.CoreV1ApiCreateNamespacedPodTemplateRequest = {
           supplementalGroups: [
             1,
           ],
+          supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
           sysctls: [
             {
               name: "name_example",
@@ -8118,6 +8189,10 @@ let body:.CoreV1ApiCreateNamespacedPodTemplateRequest = {
             hostPath: {
               path: "path_example",
               type: "type_example",
+            },
+            image: {
+              pullPolicy: "pullPolicy_example",
+              reference: "reference_example",
             },
             iscsi: {
               chapAuthDiscovery: true,
@@ -8883,6 +8958,7 @@ let body:.CoreV1ApiCreateNamespacedReplicationControllerRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -9194,6 +9270,7 @@ let body:.CoreV1ApiCreateNamespacedReplicationControllerRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -9508,6 +9585,7 @@ let body:.CoreV1ApiCreateNamespacedReplicationControllerRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -9634,10 +9712,8 @@ let body:.CoreV1ApiCreateNamespacedReplicationControllerRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -9671,6 +9747,7 @@ let body:.CoreV1ApiCreateNamespacedReplicationControllerRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -9945,6 +10022,10 @@ let body:.CoreV1ApiCreateNamespacedReplicationControllerRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -11065,6 +11146,9 @@ let body:.CoreV1ApiCreateNodeRequest = {
           Port: 1,
         },
       },
+      features: {
+        supplementalGroupsPolicy: true,
+      },
       images: [
         {
           names: [
@@ -11090,6 +11174,7 @@ let body:.CoreV1ApiCreateNodeRequest = {
         {
           features: {
             recursiveReadOnlyMounts: true,
+            userNamespaces: true,
           },
           name: "name_example",
         },
@@ -22288,6 +22373,7 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -22599,6 +22685,7 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -22913,6 +23000,7 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -23039,10 +23127,8 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
       resourceClaims: [
         {
           name: "name_example",
-          source: {
-            resourceClaimName: "resourceClaimName_example",
-            resourceClaimTemplateName: "resourceClaimTemplateName_example",
-          },
+          resourceClaimName: "resourceClaimName_example",
+          resourceClaimTemplateName: "resourceClaimTemplateName_example",
         },
       ],
       restartPolicy: "restartPolicy_example",
@@ -23076,6 +23162,7 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
         supplementalGroups: [
           1,
         ],
+        supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
         sysctls: [
           {
             name: "name_example",
@@ -23351,6 +23438,10 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             path: "path_example",
             type: "type_example",
           },
+          image: {
+            pullPolicy: "pullPolicy_example",
+            reference: "reference_example",
+          },
           iscsi: {
             chapAuthDiscovery: true,
             chapAuthSession: true,
@@ -23540,6 +23631,17 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -23567,6 +23669,7 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -23594,6 +23697,15 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -23611,6 +23723,17 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -23638,6 +23761,7 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -23665,6 +23789,15 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -23688,6 +23821,17 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -23715,6 +23859,7 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -23742,6 +23887,15 @@ let body:.CoreV1ApiReplaceNamespacedPodRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -24317,6 +24471,7 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -24628,6 +24783,7 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -24942,6 +25098,7 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -25068,10 +25225,8 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
       resourceClaims: [
         {
           name: "name_example",
-          source: {
-            resourceClaimName: "resourceClaimName_example",
-            resourceClaimTemplateName: "resourceClaimTemplateName_example",
-          },
+          resourceClaimName: "resourceClaimName_example",
+          resourceClaimTemplateName: "resourceClaimTemplateName_example",
         },
       ],
       restartPolicy: "restartPolicy_example",
@@ -25105,6 +25260,7 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
         supplementalGroups: [
           1,
         ],
+        supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
         sysctls: [
           {
             name: "name_example",
@@ -25380,6 +25536,10 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             path: "path_example",
             type: "type_example",
           },
+          image: {
+            pullPolicy: "pullPolicy_example",
+            reference: "reference_example",
+          },
           iscsi: {
             chapAuthDiscovery: true,
             chapAuthSession: true,
@@ -25569,6 +25729,17 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -25596,6 +25767,7 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -25623,6 +25795,15 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -25640,6 +25821,17 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -25667,6 +25859,7 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -25694,6 +25887,15 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -25717,6 +25919,17 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -25744,6 +25957,7 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -25771,6 +25985,15 @@ let body:.CoreV1ApiReplaceNamespacedPodEphemeralcontainersRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -26346,6 +26569,7 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -26657,6 +26881,7 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -26971,6 +27196,7 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -27097,10 +27323,8 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
       resourceClaims: [
         {
           name: "name_example",
-          source: {
-            resourceClaimName: "resourceClaimName_example",
-            resourceClaimTemplateName: "resourceClaimTemplateName_example",
-          },
+          resourceClaimName: "resourceClaimName_example",
+          resourceClaimTemplateName: "resourceClaimTemplateName_example",
         },
       ],
       restartPolicy: "restartPolicy_example",
@@ -27134,6 +27358,7 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
         supplementalGroups: [
           1,
         ],
+        supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
         sysctls: [
           {
             name: "name_example",
@@ -27409,6 +27634,10 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             path: "path_example",
             type: "type_example",
           },
+          image: {
+            pullPolicy: "pullPolicy_example",
+            reference: "reference_example",
+          },
           iscsi: {
             chapAuthDiscovery: true,
             chapAuthSession: true,
@@ -27598,6 +27827,17 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -27625,6 +27865,7 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -27652,6 +27893,15 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -27669,6 +27919,17 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -27696,6 +27957,7 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -27723,6 +27985,15 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -27746,6 +28017,17 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
           allocatedResources: {
             "key": "key_example",
           },
+          allocatedResourcesStatus: [
+            {
+              name: "name_example",
+              resources: [
+                {
+                  health: "health_example",
+                  resourceID: "resourceID_example",
+                },
+              ],
+            },
+          ],
           containerID: "containerID_example",
           image: "image_example",
           imageID: "imageID_example",
@@ -27773,6 +28055,7 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             claims: [
               {
                 name: "name_example",
+                request: "request_example",
               },
             ],
             limits: {
@@ -27800,6 +28083,15 @@ let body:.CoreV1ApiReplaceNamespacedPodStatusRequest = {
             waiting: {
               message: "message_example",
               reason: "reason_example",
+            },
+          },
+          user: {
+            linux: {
+              gid: 1,
+              supplementalGroups: [
+                1,
+              ],
+              uid: 1,
             },
           },
           volumeMounts: [
@@ -28418,6 +28710,7 @@ let body:.CoreV1ApiReplaceNamespacedPodTemplateRequest = {
               claims: [
                 {
                   name: "name_example",
+                  request: "request_example",
                 },
               ],
               limits: {
@@ -28729,6 +29022,7 @@ let body:.CoreV1ApiReplaceNamespacedPodTemplateRequest = {
               claims: [
                 {
                   name: "name_example",
+                  request: "request_example",
                 },
               ],
               limits: {
@@ -29043,6 +29337,7 @@ let body:.CoreV1ApiReplaceNamespacedPodTemplateRequest = {
               claims: [
                 {
                   name: "name_example",
+                  request: "request_example",
                 },
               ],
               limits: {
@@ -29169,10 +29464,8 @@ let body:.CoreV1ApiReplaceNamespacedPodTemplateRequest = {
         resourceClaims: [
           {
             name: "name_example",
-            source: {
-              resourceClaimName: "resourceClaimName_example",
-              resourceClaimTemplateName: "resourceClaimTemplateName_example",
-            },
+            resourceClaimName: "resourceClaimName_example",
+            resourceClaimTemplateName: "resourceClaimTemplateName_example",
           },
         ],
         restartPolicy: "restartPolicy_example",
@@ -29206,6 +29499,7 @@ let body:.CoreV1ApiReplaceNamespacedPodTemplateRequest = {
           supplementalGroups: [
             1,
           ],
+          supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
           sysctls: [
             {
               name: "name_example",
@@ -29480,6 +29774,10 @@ let body:.CoreV1ApiReplaceNamespacedPodTemplateRequest = {
             hostPath: {
               path: "path_example",
               type: "type_example",
+            },
+            image: {
+              pullPolicy: "pullPolicy_example",
+              reference: "reference_example",
             },
             iscsi: {
               chapAuthDiscovery: true,
@@ -30247,6 +30545,7 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -30558,6 +30857,7 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -30872,6 +31172,7 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -30998,10 +31299,8 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -31035,6 +31334,7 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -31309,6 +31609,10 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -32219,6 +32523,7 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -32530,6 +32835,7 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -32844,6 +33150,7 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerStatusRequest = {
                 claims: [
                   {
                     name: "name_example",
+                    request: "request_example",
                   },
                 ],
                 limits: {
@@ -32970,10 +33277,8 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerStatusRequest = {
           resourceClaims: [
             {
               name: "name_example",
-              source: {
-                resourceClaimName: "resourceClaimName_example",
-                resourceClaimTemplateName: "resourceClaimTemplateName_example",
-              },
+              resourceClaimName: "resourceClaimName_example",
+              resourceClaimTemplateName: "resourceClaimTemplateName_example",
             },
           ],
           restartPolicy: "restartPolicy_example",
@@ -33007,6 +33312,7 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerStatusRequest = {
             supplementalGroups: [
               1,
             ],
+            supplementalGroupsPolicy: "supplementalGroupsPolicy_example",
             sysctls: [
               {
                 name: "name_example",
@@ -33281,6 +33587,10 @@ let body:.CoreV1ApiReplaceNamespacedReplicationControllerStatusRequest = {
               hostPath: {
                 path: "path_example",
                 type: "type_example",
+              },
+              image: {
+                pullPolicy: "pullPolicy_example",
+                reference: "reference_example",
               },
               iscsi: {
                 chapAuthDiscovery: true,
@@ -34613,6 +34923,9 @@ let body:.CoreV1ApiReplaceNodeRequest = {
           Port: 1,
         },
       },
+      features: {
+        supplementalGroupsPolicy: true,
+      },
       images: [
         {
           names: [
@@ -34638,6 +34951,7 @@ let body:.CoreV1ApiReplaceNodeRequest = {
         {
           features: {
             recursiveReadOnlyMounts: true,
+            userNamespaces: true,
           },
           name: "name_example",
         },
@@ -34852,6 +35166,9 @@ let body:.CoreV1ApiReplaceNodeStatusRequest = {
           Port: 1,
         },
       },
+      features: {
+        supplementalGroupsPolicy: true,
+      },
       images: [
         {
           names: [
@@ -34877,6 +35194,7 @@ let body:.CoreV1ApiReplaceNodeStatusRequest = {
         {
           features: {
             recursiveReadOnlyMounts: true,
+            userNamespaces: true,
           },
           name: "name_example",
         },

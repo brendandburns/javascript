@@ -89,7 +89,31 @@ let body:.AuthorizationV1ApiCreateNamespacedLocalSubjectAccessReviewRequest = {
         verb: "verb_example",
       },
       resourceAttributes: {
+        fieldSelector: {
+          rawSelector: "rawSelector_example",
+          requirements: [
+            {
+              key: "key_example",
+              operator: "operator_example",
+              values: [
+                "values_example",
+              ],
+            },
+          ],
+        },
         group: "group_example",
+        labelSelector: {
+          rawSelector: "rawSelector_example",
+          requirements: [
+            {
+              key: "key_example",
+              operator: "operator_example",
+              values: [
+                "values_example",
+              ],
+            },
+          ],
+        },
         name: "name_example",
         namespace: "namespace_example",
         resource: "resource_example",
@@ -227,7 +251,31 @@ let body:.AuthorizationV1ApiCreateSelfSubjectAccessReviewRequest = {
         verb: "verb_example",
       },
       resourceAttributes: {
+        fieldSelector: {
+          rawSelector: "rawSelector_example",
+          requirements: [
+            {
+              key: "key_example",
+              operator: "operator_example",
+              values: [
+                "values_example",
+              ],
+            },
+          ],
+        },
         group: "group_example",
+        labelSelector: {
+          rawSelector: "rawSelector_example",
+          requirements: [
+            {
+              key: "key_example",
+              operator: "operator_example",
+              values: [
+                "values_example",
+              ],
+            },
+          ],
+        },
         name: "name_example",
         namespace: "namespace_example",
         resource: "resource_example",
@@ -517,7 +565,31 @@ let body:.AuthorizationV1ApiCreateSubjectAccessReviewRequest = {
         verb: "verb_example",
       },
       resourceAttributes: {
+        fieldSelector: {
+          rawSelector: "rawSelector_example",
+          requirements: [
+            {
+              key: "key_example",
+              operator: "operator_example",
+              values: [
+                "values_example",
+              ],
+            },
+          ],
+        },
         group: "group_example",
+        labelSelector: {
+          rawSelector: "rawSelector_example",
+          requirements: [
+            {
+              key: "key_example",
+              operator: "operator_example",
+              values: [
+                "values_example",
+              ],
+            },
+          ],
+        },
         name: "name_example",
         namespace: "namespace_example",
         resource: "resource_example",
