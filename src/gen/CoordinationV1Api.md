@@ -84,7 +84,9 @@ let body:.CoordinationV1ApiCreateNamespacedLeaseRequest = {
       holderIdentity: "holderIdentity_example",
       leaseDurationSeconds: 1,
       leaseTransitions: 1,
+      preferredHolder: "preferredHolder_example",
       renewTime: "renewTime_example",
+      strategy: "strategy_example",
     },
   },
   // string | If \'true\', then the output is pretty printed. Defaults to \'false\' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). (optional)
@@ -770,7 +772,9 @@ let body:.CoordinationV1ApiReplaceNamespacedLeaseRequest = {
       holderIdentity: "holderIdentity_example",
       leaseDurationSeconds: 1,
       leaseTransitions: 1,
+      preferredHolder: "preferredHolder_example",
       renewTime: "renewTime_example",
+      strategy: "strategy_example",
     },
   },
   // string | If \'true\', then the output is pretty printed. Defaults to \'false\' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). (optional)
