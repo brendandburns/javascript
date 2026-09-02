@@ -1,6 +1,7 @@
 import { WritableStreamBuffer } from 'stream-buffers';
 import tar from 'tar-fs';
 
+import { V1Status } from './api.js';
 import { KubeConfig } from './config.js';
 import { Exec } from './exec.js';
 
@@ -33,21 +34,44 @@ export class Cp {
         command.push(srcPath);
         const writerStream = tar.extract(tgtPath);
         const errStream = new WritableStreamBuffer();
-        this.execInstance.exec(
-            namespace,
-            podName,
-            containerName,
-            command,
-            writerStream,
-            errStream,
-            null,
-            false,
-            async () => {
-                if (errStream.size()) {
-                    throw new Error(`Error from cpFromPod - details: \n ${errStream.getContentsAsString()}`);
+        const transferComplete = new Promise<void>((resolve, reject) => {
+            writerStream.once('finish', () => resolve());
+            writerStream.once('error', reject);
+        });
+        const commandComplete = new Promise<void>((resolve, reject) => {
+            const statusCallback = (status: V1Status): void => {
+                if (status.status !== 'Success') {
+                    reject(
+                        new Error(
+                            `Error from cpFromPod - details: \n ${status.message || JSON.stringify(status)}`,
+                        ),
+                    );
+                    return;
                 }
-            },
-        );
+                if (errStream.size()) {
+                    reject(
+                        new Error(`Error from cpFromPod - details: \n ${errStream.getContentsAsString()}`),
+                    );
+                    return;
+                }
+                resolve();
+            };
+            this.execInstance
+                .exec(
+                    namespace,
+                    podName,
+                    containerName,
+                    command,
+                    writerStream,
+                    errStream,
+                    null,
+                    false,
+                    statusCallback,
+                )
+                .catch(reject);
+        });
+
+        await Promise.all([transferComplete, commandComplete]);
     }
 
     /**
@@ -67,20 +91,41 @@ export class Cp {
         const command = ['tar', 'xf', '-', '-C', tgtPath];
         const readStream = tar.pack(srcPath);
         const errStream = new WritableStreamBuffer();
-        this.execInstance.exec(
-            namespace,
-            podName,
-            containerName,
-            command,
-            null,
-            errStream,
-            readStream,
-            false,
-            async () => {
-                if (errStream.size()) {
-                    throw new Error(`Error from cpToPod - details: \n ${errStream.getContentsAsString()}`);
+        const transferComplete = new Promise<void>((resolve, reject) => {
+            readStream.once('end', () => resolve());
+            readStream.once('error', reject);
+        });
+        const commandComplete = new Promise<void>((resolve, reject) => {
+            const statusCallback = (status: V1Status): void => {
+                if (status.status !== 'Success') {
+                    reject(
+                        new Error(
+                            `Error from cpToPod - details: \n ${status.message || JSON.stringify(status)}`,
+                        ),
+                    );
+                    return;
                 }
-            },
-        );
+                if (errStream.size()) {
+                    reject(new Error(`Error from cpToPod - details: \n ${errStream.getContentsAsString()}`));
+                    return;
+                }
+                resolve();
+            };
+            this.execInstance
+                .exec(
+                    namespace,
+                    podName,
+                    containerName,
+                    command,
+                    null,
+                    errStream,
+                    readStream,
+                    false,
+                    statusCallback,
+                )
+                .catch(reject);
+        });
+
+        await Promise.all([transferComplete, commandComplete]);
     }
 }
