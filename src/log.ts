@@ -64,7 +64,7 @@ export function AddOptionsToSearchParams(
     if (options?.limitBytes) {
         searchParams.set('limitBytes', options.limitBytes.toString());
     }
-    searchParams.set('pretty', options?.follow?.toString() || 'false');
+    searchParams.set('pretty', options?.pretty?.toString() || 'false');
     searchParams.set('previous', options?.previous?.toString() || 'false');
     if (options?.sinceSeconds) {
         searchParams.set('sinceSeconds', options?.sinceSeconds?.toString() || 'false');
@@ -113,9 +113,17 @@ export class Log {
         doneOrOptions?: ((err: any) => void) | LogOptions,
         options?: LogOptions,
     ): Promise<AbortController> {
+        const done = typeof doneOrOptions === 'function' ? doneOrOptions : undefined;
         if (typeof doneOrOptions !== 'function') {
             options = doneOrOptions;
         }
+        let doneCalled = false;
+        const doneOnce = (err: any) => {
+            if (!doneCalled) {
+                doneCalled = true;
+                done?.(err);
+            }
+        };
 
         const path = `/api/v1/namespaces/${namespace}/pods/${podName}/log`;
 
@@ -134,6 +142,13 @@ export class Log {
         await this.config.applySecurityAuthentication(ctx);
 
         const controller = new AbortController();
+        controller.signal.addEventListener(
+            'abort',
+            () => {
+                doneOnce(controller.signal.reason ?? new DOMException('The operation was aborted', 'AbortError'));
+            },
+            { once: true },
+        );
 
         try {
             const response = await fetch(requestURL.toString(), {
@@ -154,6 +169,11 @@ export class Log {
                     );
                 }
                 const nodeStream = Readable.fromWeb(response.body as any);
+                nodeStream.once('error', doneOnce);
+                stream.once('error', doneOnce);
+                stream.once('finish', () => doneOnce(null));
+                nodeStream.once('end', () => doneOnce(null));
+                nodeStream.once('close', () => doneOnce(null));
                 nodeStream.pipe(stream);
             } else if (status === 500) {
                 const v1status = (await response.json()) as V1Status;
@@ -184,10 +204,13 @@ export class Log {
             }
         } catch (err: any) {
             if (err instanceof ApiException) {
+                doneOnce(err);
                 throw err;
             }
 
-            throw new ApiException<undefined>(500, 'Error occurred in log request', undefined, {});
+            const apiError = new ApiException<undefined>(500, 'Error occurred in log request', undefined, {});
+            doneOnce(apiError);
+            throw apiError;
         }
 
         return controller;
