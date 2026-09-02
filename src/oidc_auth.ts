@@ -14,7 +14,7 @@ interface JwtObj {
 
 interface Token {
     id_token: string;
-    refresh_token: string;
+    refresh_token?: string;
     expires_at: number;
 }
 
@@ -39,6 +39,8 @@ class OidcClient implements Client {
 }
 
 export class OpenIDConnectAuth implements Authenticator {
+    private static readonly EPOCH_SECONDS_CUTOFF = 1_000_000_000;
+
     public static decodeJWT(token: string): JwtObj | null {
         const parts = token.split('.');
         if (parts.length !== 3) {
@@ -64,8 +66,18 @@ export class OpenIDConnectAuth implements Authenticator {
         return jwt.payload.exp;
     }
 
-    // public for testing purposes.
-    private currentTokenExpiration: number = 0;
+    public static normalizeExpiration(expiresAt: number): number {
+        if (!Number.isFinite(expiresAt) || expiresAt <= 0) {
+            return 0;
+        }
+        if (expiresAt < OpenIDConnectAuth.EPOCH_SECONDS_CUTOFF) {
+            return Math.floor(Date.now() / 1000) + Math.floor(expiresAt);
+        }
+        return Math.floor(expiresAt);
+    }
+
+    private readonly currentTokenExpirationByCredential = new Map<string, number>();
+
     public isAuthProvider(user: User): boolean {
         if (!user.authProvider) {
             return false;
@@ -103,13 +115,32 @@ export class OpenIDConnectAuth implements Authenticator {
         return this.refresh(user, overrideClient);
     }
 
-    private async refresh(user: User, overrideClient?: Client): Promise<string | null> {
-        if (this.currentTokenExpiration === 0) {
-            this.currentTokenExpiration = OpenIDConnectAuth.expirationFromToken(
-                user.authProvider.config['id-token'],
-            );
+    private getCredentialKey(user: User): string {
+        const config = user.authProvider?.config || {};
+        return JSON.stringify({
+            authProvider: user.authProvider?.name,
+            clientId: config['client-id'],
+            clientSecret: config['client-secret'],
+            issuerUrl: config['idp-issuer-url'],
+            refreshToken: config['refresh-token'],
+            idpCertificateAuthority: config['idp-certificate-authority'],
+            idpCertificateAuthorityData: config['idp-certificate-authority-data'],
+        });
+    }
+
+    private getCurrentTokenExpiration(user: User, credentialKey: string): number {
+        const expirationFromIdToken = OpenIDConnectAuth.expirationFromToken(user.authProvider.config['id-token']);
+        if (expirationFromIdToken > 0) {
+            this.currentTokenExpirationByCredential.set(credentialKey, expirationFromIdToken);
+            return expirationFromIdToken;
         }
-        if (Date.now() / 1000 > this.currentTokenExpiration) {
+        return this.currentTokenExpirationByCredential.get(credentialKey) || 0;
+    }
+
+    private async refresh(user: User, overrideClient?: Client): Promise<string | null> {
+        const originalCredentialKey = this.getCredentialKey(user);
+        const currentTokenExpiration = this.getCurrentTokenExpiration(user, originalCredentialKey);
+        if (Date.now() / 1000 > currentTokenExpiration) {
             if (
                 !user.authProvider.config['client-id'] ||
                 !user.authProvider.config['refresh-token'] ||
@@ -121,8 +152,17 @@ export class OpenIDConnectAuth implements Authenticator {
             const client = overrideClient ? overrideClient : await this.getClient(user);
             const newToken = await client.refresh(user.authProvider.config['refresh-token']);
             user.authProvider.config['id-token'] = newToken.id_token;
-            user.authProvider.config['refresh-token'] = newToken.refresh_token;
-            this.currentTokenExpiration = newToken.expires_at;
+            user.authProvider.config['refresh-token'] =
+                newToken.refresh_token || user.authProvider.config['refresh-token'];
+
+            const newCredentialKey = this.getCredentialKey(user);
+            const expirationFromToken = OpenIDConnectAuth.expirationFromToken(newToken.id_token);
+            const normalizedExpiration =
+                expirationFromToken > 0 ? expirationFromToken : OpenIDConnectAuth.normalizeExpiration(newToken.expires_at);
+            this.currentTokenExpirationByCredential.set(newCredentialKey, normalizedExpiration);
+            if (newCredentialKey !== originalCredentialKey) {
+                this.currentTokenExpirationByCredential.delete(originalCredentialKey);
+            }
         }
         return user.authProvider.config['id-token'];
     }

@@ -103,11 +103,13 @@ describe('OIDCAuth', () => {
     });
 
     it('authorization should be work if client-secret missing', async () => {
+        const future = Date.now() / 1000 + 1000;
+        const token = makeJWT('{}', { exp: future }, 'fake');
         const user = {
             authProvider: {
                 name: 'oidc',
                 config: {
-                    'id-token': 'fakeToken',
+                    'id-token': token,
                     'client-id': 'id',
                     'refresh-token': 'refreshtoken',
                     'idp-issuer-url': 'https://www.google.com/',
@@ -117,8 +119,7 @@ describe('OIDCAuth', () => {
 
         const opts = {} as https.RequestOptions;
         opts.headers = {} as OutgoingHttpHeaders;
-        (auth as any).currentTokenExpiration = Date.now() / 1000 + 1000;
-        await auth.applyAuthentication(user, opts, {});
+        await auth.applyAuthentication(user, opts);
         strictEqual(opts.headers.Authorization, 'Bearer fakeToken');
     });
 
@@ -186,11 +187,13 @@ describe('OIDCAuth', () => {
     });
 
     it('return token when it is still active', async () => {
+        const future = Date.now() / 1000 + 1000;
+        const token = makeJWT('{}', { exp: future }, 'fake');
         const user = {
             authProvider: {
                 name: 'oidc',
                 config: {
-                    'id-token': 'fakeToken',
+                    'id-token': token,
                     'client-id': 'id',
                     'client-secret': 'clientsecret',
                     'refresh-token': 'refreshtoken',
@@ -201,17 +204,18 @@ describe('OIDCAuth', () => {
 
         const opts = {} as https.RequestOptions;
         opts.headers = {} as OutgoingHttpHeaders;
-        (auth as any).currentTokenExpiration = Date.now() / 1000 + 1000;
-        await auth.applyAuthentication(user, opts, {});
+        await auth.applyAuthentication(user, opts);
         strictEqual(opts.headers.Authorization, 'Bearer fakeToken');
     });
 
     it('return new token when the current expired', async () => {
+        const past = Math.floor(Date.now() / 1000) - 1000;
+        const token = makeJWT('{}', { exp: past }, 'fake');
         const user = {
             authProvider: {
                 name: 'oidc',
                 config: {
-                    'id-token': 'fakeToken',
+                    'id-token': token,
                     'client-id': 'id',
                     'client-secret': 'clientsecret',
                     'refresh-token': 'refreshtoken',
@@ -222,7 +226,6 @@ describe('OIDCAuth', () => {
 
         const opts = {} as https.RequestOptions;
         opts.headers = {} as OutgoingHttpHeaders;
-        (auth as any).currentTokenExpiration = Date.now() / 1000 - 5000;
         const newExpiration = Date.now() / 1000 + 120;
         await auth.applyAuthentication(user, opts, {
             refresh: async (token) => {
@@ -234,17 +237,19 @@ describe('OIDCAuth', () => {
             },
         });
         strictEqual(opts.headers.Authorization, 'Bearer newToken');
-        strictEqual((auth as any).currentTokenExpiration, newExpiration);
+        strictEqual(user.authProvider.config['id-token'], 'newToken');
         // Check also the new refresh token sticks in the user config
         strictEqual(user.authProvider.config['refresh-token'], 'newRefreshToken');
     });
 
-    it('return a new token when the its the first time we see this user', async () => {
+    it('return a new token when the token is expired', async () => {
+        const past = Math.floor(Date.now() / 1000) - 1000;
+        const token = makeJWT('{}', { exp: past }, 'fake');
         const user = {
             authProvider: {
                 name: 'oidc',
                 config: {
-                    'id-token': 'fakeToken',
+                    'id-token': token,
                     'client-id': 'id',
                     'client-secret': 'clientsecret',
                     'refresh-token': 'refreshtoken',
@@ -256,7 +261,6 @@ describe('OIDCAuth', () => {
         const opts = {} as https.RequestOptions;
         opts.headers = {} as OutgoingHttpHeaders;
         const newExpiration = Date.now() / 1000 + 120;
-        (auth as any).currentTokenExpiration = 0;
         await auth.applyAuthentication(user, opts, {
             refresh: async (token) => {
                 return {
@@ -266,7 +270,92 @@ describe('OIDCAuth', () => {
             },
         });
         strictEqual(opts.headers.Authorization, 'Bearer newToken');
-        strictEqual((auth as any).currentTokenExpiration, newExpiration);
+        strictEqual(user.authProvider.config['refresh-token'], 'refreshtoken');
+    });
+
+    it('uses refresh expiry as relative seconds for opaque id tokens', async () => {
+        const past = Math.floor(Date.now() / 1000) - 1000;
+        const token = makeJWT('{}', { exp: past }, 'fake');
+        const user = {
+            authProvider: {
+                name: 'oidc',
+                config: {
+                    'id-token': token,
+                    'client-id': 'id',
+                    'client-secret': 'clientsecret',
+                    'refresh-token': 'refreshtoken',
+                    'idp-issuer-url': 'https://www.google.com/',
+                },
+            },
+        } as User;
+
+        const opts = {} as https.RequestOptions;
+        opts.headers = {} as OutgoingHttpHeaders;
+        let refreshCount = 0;
+        const overrideClient = {
+            refresh: async () => {
+                refreshCount++;
+                return {
+                    expires_at: 120,
+                    id_token: 'opaqueToken',
+                    refresh_token: 'newRefreshToken',
+                };
+            },
+        };
+
+        await auth.applyAuthentication(user, opts, overrideClient);
+        await auth.applyAuthentication(user, opts, overrideClient);
+        strictEqual(refreshCount, 1);
+    });
+
+    it('keeps OIDC expiration state isolated by credential identity', async () => {
+        const future = Math.floor(Date.now() / 1000) + 1000;
+        const past = Math.floor(Date.now() / 1000) - 1000;
+        const userA = {
+            authProvider: {
+                name: 'oidc',
+                config: {
+                    'id-token': makeJWT('{}', { exp: future }, 'fake'),
+                    'client-id': 'client-a',
+                    'client-secret': 'clientsecret',
+                    'refresh-token': 'refresh-a',
+                    'idp-issuer-url': 'https://www.google.com/',
+                },
+            },
+        } as User;
+        const userB = {
+            authProvider: {
+                name: 'oidc',
+                config: {
+                    'id-token': makeJWT('{}', { exp: past }, 'fake'),
+                    'client-id': 'client-b',
+                    'client-secret': 'clientsecret',
+                    'refresh-token': 'refresh-b',
+                    'idp-issuer-url': 'https://www.google.com/',
+                },
+            },
+        } as User;
+
+        const optsA = {} as https.RequestOptions;
+        const optsB = {} as https.RequestOptions;
+        optsA.headers = {} as OutgoingHttpHeaders;
+        optsB.headers = {} as OutgoingHttpHeaders;
+
+        let refreshCount = 0;
+        await auth.applyAuthentication(userA, optsA);
+        await auth.applyAuthentication(userB, optsB, {
+            refresh: async () => {
+                refreshCount++;
+                return {
+                    expires_at: 120,
+                    id_token: 'newTokenForUserB',
+                    refresh_token: 'newRefreshTokenForUserB',
+                };
+            },
+        });
+
+        strictEqual(refreshCount, 1);
+        strictEqual(userB.authProvider.config['id-token'], 'newTokenForUserB');
     });
 
     it('should work with idp-certificate-authority-data', async () => {
