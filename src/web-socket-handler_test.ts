@@ -291,6 +291,55 @@ describe('WebSocket', () => {
             strictEqual(datum, fill);
         }
     });
+    it('should call done once after connection errors and closes', async () => {
+        const kc = new KubeConfig();
+        const host = 'foo.company.com';
+        const server = `https://${host}`;
+        kc.clusters = [
+            {
+                name: 'cluster',
+                server,
+            } as Cluster,
+        ] as Cluster[];
+        kc.contexts = [
+            {
+                cluster: 'cluster',
+                user: 'user',
+            } as Context,
+        ] as Context[];
+        kc.users = [
+            {
+                name: 'user',
+            } as User,
+        ];
+
+        const mockWs = {} as WebSocket.WebSocket;
+        const handler = new WebSocketHandler(kc, (): WebSocket.WebSocket => {
+            return mockWs;
+        });
+
+        let doneCount = 0;
+        let doneErr: any;
+        const promise = handler.connect('/some/path', null, null, (err: any) => {
+            doneCount += 1;
+            doneErr = err;
+        });
+        await setImmediatePromise();
+        mockWs.onopen!({ target: mockWs, type: 'open' });
+        await promise;
+
+        const errEvt = {
+            error: {},
+            message: 'some message',
+            type: 'some type',
+            target: mockWs,
+        };
+        mockWs.onerror!(errEvt);
+        mockWs.onclose!({ target: mockWs, type: 'close', wasClean: false, code: 1006, reason: '' });
+
+        strictEqual(doneCount, 1);
+        strictEqual(doneErr, errEvt);
+    });
     it('handles multi-byte characters', () => {
         return new Promise<void>((resolve) => {
             const stream = new Readable({ read() {} });

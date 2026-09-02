@@ -55,33 +55,31 @@ export class PortForward {
         err?.once('error', doneOnce);
         const path = `/api/v1/namespaces/${namespace}/pods/${podName}/portforward?${queryStr}`;
         const createWebSocket = (): Promise<WebSocket.WebSocket> => {
-            return this.handler.connect(
-                path,
-                null,
-                (streamNum: number, buff: Buffer | string): boolean => {
-                    if (streamNum >= targetPorts.length * 2) {
-                        if (this.disconnectOnErr) {
-                            doneOnce(new Error(`Unknown port-forward stream: ${streamNum}`));
-                            return false;
-                        }
-                        return true;
-                    }
-                    // First two bytes of each stream are the port number
-                    if (needsToReadPortNumber[streamNum]) {
-                        buff = buff.slice(2);
-                        needsToReadPortNumber[streamNum] = false;
-                    }
-                    if (streamNum % 2 === 1) {
-                        if (err) {
-                            err.write(buff);
-                        }
-                    } else {
-                        output.write(buff);
+            const handleOutput = (streamNum: number, buff: Buffer | string): boolean => {
+                if (streamNum >= targetPorts.length * 2) {
+                    if (this.disconnectOnErr) {
+                        doneOnce(new Error(`Unknown port-forward stream: ${streamNum}`));
+                        return false;
                     }
                     return true;
-                },
-                doneOnce,
-            );
+                }
+                // First two bytes of each stream are the port number
+                if (needsToReadPortNumber[streamNum]) {
+                    buff = buff.slice(2);
+                    needsToReadPortNumber[streamNum] = false;
+                }
+                if (streamNum % 2 === 1) {
+                    if (err) {
+                        err.write(buff);
+                    }
+                } else {
+                    output.write(buff);
+                }
+                return true;
+            };
+            return done
+                ? this.handler.connect(path, null, handleOutput, doneOnce)
+                : this.handler.connect(path, null, handleOutput);
         };
 
         if (retryCount < 1) {
@@ -90,7 +88,14 @@ export class PortForward {
             return ws;
         }
 
-        return WebSocketHandler.restartableHandleStandardInput(createWebSocket, input, 0, retryCount, false, doneOnce);
+        return WebSocketHandler.restartableHandleStandardInput(
+            createWebSocket,
+            input,
+            0,
+            retryCount,
+            false,
+            doneOnce,
+        );
     }
 
     /**
@@ -125,7 +130,16 @@ export class PortForward {
         const labelSelector = this.buildLabelSelector(service.spec.selector);
         const pod = await this.getFirstReadyPod(namespace, labelSelector);
 
-        return this.portForward(namespace, pod.metadata!.name!, targetPorts, output, err, input, retryCount, done);
+        return this.portForward(
+            namespace,
+            pod.metadata!.name!,
+            targetPorts,
+            output,
+            err,
+            input,
+            retryCount,
+            done,
+        );
     }
 
     /**
@@ -163,7 +177,16 @@ export class PortForward {
         const labelSelector = this.buildLabelSelector(deployment.spec.selector.matchLabels);
         const pod = await this.getFirstReadyPod(namespace, labelSelector);
 
-        return this.portForward(namespace, pod.metadata!.name!, targetPorts, output, err, input, retryCount, done);
+        return this.portForward(
+            namespace,
+            pod.metadata!.name!,
+            targetPorts,
+            output,
+            err,
+            input,
+            retryCount,
+            done,
+        );
     }
 
     /**

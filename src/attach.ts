@@ -43,15 +43,13 @@ export class Attach {
         };
         const queryStr = querystring.stringify(query);
         const path = `/api/v1/namespaces/${namespace}/pods/${podName}/attach?${queryStr}`;
-        const conn = await this.handler.connect(
-            path,
-            null,
-            (streamNum: number, buff: Buffer): boolean => {
-                WebSocketHandler.handleStandardStreams(streamNum, buff, stdout, stderr);
-                return true;
-            },
-            doneOnce,
-        );
+        const handleOutput = (streamNum: number, buff: Buffer): boolean => {
+            WebSocketHandler.handleStandardStreams(streamNum, buff, stdout, stderr);
+            return true;
+        };
+        const conn = done
+            ? await this.handler.connect(path, null, handleOutput, doneOnce)
+            : await this.handler.connect(path, null, handleOutput);
         if (stdin != null) {
             WebSocketHandler.handleStandardInput(conn, stdin, WebSocketHandler.StdinStream, doneOnce);
         }

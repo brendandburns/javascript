@@ -145,7 +145,9 @@ export class Log {
         controller.signal.addEventListener(
             'abort',
             () => {
-                doneOnce(controller.signal.reason ?? new DOMException('The operation was aborted', 'AbortError'));
+                doneOnce(
+                    controller.signal.reason ?? new DOMException('The operation was aborted', 'AbortError'),
+                );
             },
             { once: true },
         );

@@ -310,7 +310,7 @@ describe('Watch', () => {
         strictEqual(doneErr[0], null);
     });
 
-    it('should ignore JSON parse errors', async (t) => {
+    it('should report JSON parse errors', async (t) => {
         const obj = {
             type: 'MODIFIED',
             object: {
@@ -329,6 +329,7 @@ describe('Watch', () => {
 
         const receivedTypes: string[] = [];
         const receivedObjects: string[] = [];
+        let doneErr: any;
 
         let doneResolve: any;
         const donePromise = new Promise((resolve) => {
@@ -342,7 +343,8 @@ describe('Watch', () => {
                 receivedTypes.push(recievedType);
                 receivedObjects.push(recievedObject);
             },
-            () => {
+            (err: any) => {
+                doneErr = err;
                 doneResolve();
             },
         );
@@ -351,6 +353,7 @@ describe('Watch', () => {
 
         deepStrictEqual(receivedTypes, [obj.type]);
         deepStrictEqual(receivedObjects, [obj.object]);
+        strictEqual(doneErr instanceof SyntaxError, true);
     });
 
     it('should timeout when server takes too long to respond', async (t) => {

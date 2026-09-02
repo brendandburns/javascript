@@ -161,21 +161,23 @@ export class WebSocketHandler implements WebSocketInterface {
         let ws: WebSocket.WebSocket | null = null;
 
         stdin.on('data', (data) => {
-            queue = queue.then(async () => {
-                ws = await WebSocketHandler.processData(
-                    data,
-                    ws,
-                    createWS,
-                    streamNum,
-                    retryCount,
-                    stdin.readableEncoding,
-                );
-            }).catch((err) => {
-                done?.(err);
-                if (ws !== null) {
-                    ws.close();
-                }
-            });
+            queue = queue
+                .then(async () => {
+                    ws = await WebSocketHandler.processData(
+                        data,
+                        ws,
+                        createWS,
+                        streamNum,
+                        retryCount,
+                        stdin.readableEncoding,
+                    );
+                })
+                .catch((err) => {
+                    done?.(err);
+                    if (ws !== null) {
+                        ws.close();
+                    }
+                });
         });
 
         if (addFlushForTesting) {
