@@ -129,7 +129,9 @@ export class OpenIDConnectAuth implements Authenticator {
     }
 
     private getCurrentTokenExpiration(user: User, credentialKey: string): number {
-        const expirationFromIdToken = OpenIDConnectAuth.expirationFromToken(user.authProvider.config['id-token']);
+        const expirationFromIdToken = OpenIDConnectAuth.expirationFromToken(
+            user.authProvider.config['id-token'],
+        );
         if (expirationFromIdToken > 0) {
             this.currentTokenExpirationByCredential.set(credentialKey, expirationFromIdToken);
             return expirationFromIdToken;
@@ -158,7 +160,9 @@ export class OpenIDConnectAuth implements Authenticator {
             const newCredentialKey = this.getCredentialKey(user);
             const expirationFromToken = OpenIDConnectAuth.expirationFromToken(newToken.id_token);
             const normalizedExpiration =
-                expirationFromToken > 0 ? expirationFromToken : OpenIDConnectAuth.normalizeExpiration(newToken.expires_at);
+                expirationFromToken > 0
+                    ? expirationFromToken
+                    : OpenIDConnectAuth.normalizeExpiration(newToken.expires_at);
             this.currentTokenExpirationByCredential.set(newCredentialKey, normalizedExpiration);
             if (newCredentialKey !== originalCredentialKey) {
                 this.currentTokenExpirationByCredential.delete(originalCredentialKey);
