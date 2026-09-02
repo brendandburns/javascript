@@ -25,15 +25,6 @@ export class Attach {
         tty: boolean,
         done?: (err: any) => void,
     ): Promise<WebSocket.WebSocket> {
-        let doneCalled = false;
-        const doneOnce = (err: any) => {
-            if (!doneCalled) {
-                doneCalled = true;
-                done?.(err);
-            }
-        };
-        stdout?.once('error', doneOnce);
-        stderr?.once('error', doneOnce);
         const query = {
             container: containerName,
             stderr: stderr != null,
@@ -43,26 +34,21 @@ export class Attach {
         };
         const queryStr = querystring.stringify(query);
         const path = `/api/v1/namespaces/${namespace}/pods/${podName}/attach?${queryStr}`;
-        const handleOutput = (streamNum: number, buff: Buffer): boolean => {
-            WebSocketHandler.handleStandardStreams(streamNum, buff, stdout, stderr);
-            return true;
-        };
-        const conn = done
-            ? await this.handler.connect(path, null, handleOutput, doneOnce)
-            : await this.handler.connect(path, null, handleOutput);
-        if (stdin != null) {
-            WebSocketHandler.handleStandardInput(conn, stdin, WebSocketHandler.StdinStream, doneOnce);
-        }
+        let resizeStream: stream.Readable | null = null;
         if (isResizable(stdout)) {
             this.terminalSizeQueue = new TerminalSizeQueue();
-            WebSocketHandler.handleStandardInput(
-                conn,
-                this.terminalSizeQueue,
-                WebSocketHandler.ResizeStream,
-                doneOnce,
-            );
+            resizeStream = this.terminalSizeQueue;
             this.terminalSizeQueue.handleResizes(stdout as any as ResizableStream);
         }
-        return conn;
+        return WebSocketHandler.connectStandardStreams(
+            this.handler,
+            path,
+            stdout,
+            stderr,
+            stdin,
+            resizeStream,
+            undefined,
+            done,
+        );
     }
 }

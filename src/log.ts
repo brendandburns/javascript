@@ -4,7 +4,7 @@ import { ApiException } from './api.js';
 import { KubeConfig } from './config.js';
 import { HttpMethod, RequestContext } from './gen/http/http.js';
 import { V1Status } from './gen/index.js';
-import { normalizeResponseHeaders } from './util.js';
+import { createDoneOnce, normalizeResponseHeaders } from './util.js';
 
 export interface LogOptions {
     /**
@@ -117,13 +117,7 @@ export class Log {
         if (typeof doneOrOptions !== 'function') {
             options = doneOrOptions;
         }
-        let doneCalled = false;
-        const doneOnce = (err: any) => {
-            if (!doneCalled) {
-                doneCalled = true;
-                done?.(err);
-            }
-        };
+        const doneOnce = createDoneOnce(done);
 
         const path = `/api/v1/namespaces/${namespace}/pods/${podName}/log`;
 

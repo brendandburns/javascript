@@ -3,6 +3,7 @@ import stream from 'node:stream';
 
 import { V1Status } from './api.js';
 import { KubeConfig } from './config.js';
+import { createDoneOnce } from './util.js';
 
 const protocols = [
     'v5.channel.k8s.io',
@@ -115,6 +116,45 @@ export class WebSocketHandler implements WebSocketInterface {
             return new Error(status.message || status.reason || 'Remote command failed');
         }
         return null;
+    }
+
+    public static async connectStandardStreams(
+        handler: WebSocketInterface,
+        path: string,
+        stdout: stream.Writable | null,
+        stderr: stream.Writable | null,
+        stdin: stream.Readable | null,
+        resizeStream: stream.Readable | null,
+        statusCallback?: (status: V1Status) => void,
+        done?: (err: any) => void,
+    ): Promise<WebSocket.WebSocket> {
+        const doneOnce = createDoneOnce(done);
+        stdout?.once('error', doneOnce);
+        stderr?.once('error', doneOnce);
+
+        const handleOutput = (streamNum: number, buff: Buffer): boolean => {
+            const status = WebSocketHandler.handleStandardStreams(streamNum, buff, stdout, stderr);
+            if (status != null) {
+                if (statusCallback) {
+                    statusCallback(status);
+                }
+                doneOnce(WebSocketHandler.statusError(status));
+                return false;
+            }
+            return true;
+        };
+
+        const conn = done
+            ? await handler.connect(path, null, handleOutput, doneOnce)
+            : await handler.connect(path, null, handleOutput);
+
+        if (stdin != null) {
+            WebSocketHandler.handleStandardInput(conn, stdin, WebSocketHandler.StdinStream, doneOnce);
+        }
+        if (resizeStream != null) {
+            WebSocketHandler.handleStandardInput(conn, resizeStream, WebSocketHandler.ResizeStream, doneOnce);
+        }
+        return conn;
     }
 
     public static async processData(
@@ -261,13 +301,7 @@ export class WebSocketHandler implements WebSocketInterface {
                 ? this.socketFactory(uri, protocols, opts)
                 : new WebSocket(uri, protocols, opts);
             let resolved = false;
-            let doneCalled = false;
-            const doneOnce = (err: any) => {
-                if (!doneCalled) {
-                    doneCalled = true;
-                    done?.(err);
-                }
-            };
+            const doneOnce = createDoneOnce(done);
 
             client.onopen = () => {
                 resolved = true;

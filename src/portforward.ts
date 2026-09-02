@@ -5,6 +5,7 @@ import stream from 'node:stream';
 import { AppsV1Api, CoreV1Api, V1Pod } from './gen/index.js';
 import { KubeConfig } from './config.js';
 import { WebSocketHandler, WebSocketInterface } from './web-socket-handler.js';
+import { createDoneOnce } from './util.js';
 
 export class PortForward {
     private readonly config: KubeConfig;
@@ -44,13 +45,7 @@ export class PortForward {
             needsToReadPortNumber[index * 2] = true;
             needsToReadPortNumber[index * 2 + 1] = true;
         });
-        let doneCalled = false;
-        const doneOnce = (doneErr: any) => {
-            if (!doneCalled) {
-                doneCalled = true;
-                done?.(doneErr);
-            }
-        };
+        const doneOnce = createDoneOnce(done);
         output.once('error', doneOnce);
         err?.once('error', doneOnce);
         const path = `/api/v1/namespaces/${namespace}/pods/${podName}/portforward?${queryStr}`;

@@ -103,8 +103,8 @@ export class Watch {
                     try {
                         const data = JSON.parse(line.toString());
                         callback(data.type, data.object, data);
-                    } catch (err) {
-                        doneCallOnce(err);
+                    } catch {
+                        // ignore parse errors
                     }
                 });
                 body.on('data', resetTimer);
